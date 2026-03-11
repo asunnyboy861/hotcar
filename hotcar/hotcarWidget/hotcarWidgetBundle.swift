@@ -13,6 +13,8 @@ struct hotcarWidgetBundle: WidgetBundle {
     var body: some Widget {
         hotcarWidget()
         hotcarWidgetControl()
-        hotcarWidgetLiveActivity()
+        if #available(iOS 16.1, *) {
+            WarmUpLiveActivity()
+        }
     }
 }

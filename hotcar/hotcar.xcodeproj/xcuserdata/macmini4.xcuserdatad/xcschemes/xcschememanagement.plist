@@ -12,7 +12,30 @@
 		<key>hotcarWidgetExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>6AE0938F2F5F1D0500074882</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6AE778232F5EFC05003AB48C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6AE778302F5EFC06003AB48C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6AE7783A2F5EFC06003AB48C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

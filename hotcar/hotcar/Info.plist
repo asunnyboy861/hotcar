@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>HotCar needs your location to provide accurate weather data for calculating vehicle warm-up time based on local temperature conditions.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>HotCar uses your location to monitor weather conditions in your area and send timely warm-up reminders.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
