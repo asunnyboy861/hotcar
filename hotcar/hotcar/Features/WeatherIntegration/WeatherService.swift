@@ -46,7 +46,7 @@ final class WeatherService: ObservableObject {
         
         print("📍 HotCar Location: lat=\(location.latitude), lon=\(location.longitude)")
         
-        let urlString = "\(baseURL)?latitude=\(location.latitude)&longitude=\(location.longitude)&current_weather=true&temperature_unit=fahrenheit"
+        let urlString = "\(baseURL)?latitude=\(location.latitude)&longitude=\(location.longitude)&current_weather=true&temperature_unit=celsius"
         
         guard let url = URL(string: urlString) else {
             errorMessage = "Invalid URL"
@@ -84,7 +84,7 @@ final class WeatherService: ObservableObject {
     func fetchTomorrowMorningTemperature() async {
         let location = locationService.getCurrentLocation()
         
-        let urlString = "\(baseURL)?latitude=\(location.latitude)&longitude=\(location.longitude)&hourly=temperature_2m&forecast_days=2&temperature_unit=fahrenheit"
+        let urlString = "\(baseURL)?latitude=\(location.latitude)&longitude=\(location.longitude)&hourly=temperature_2m&forecast_days=2&temperature_unit=celsius"
         
         guard let url = URL(string: urlString) else {
             return

@@ -60,6 +60,8 @@ struct WarmUpStatistics {
     var totalMinutes: Int = 0
     var totalFuelUsed: Double = 0
     var totalCost: Double = 0
+    var totalFuelSaved: Double = 0
+    var totalCO2Saved: Double = 0
     var averageDuration: Double = 0
     var averageTemperature: Double = 0
     var sessionsByVehicle: [String: Int] = [:]
@@ -68,7 +70,6 @@ struct WarmUpStatistics {
     var weeklySessions: [String: Int] = [:]
     var monthlySessions: [String: Int] = [:]
     
-    // Computed statistics
     var averageFuelPerSession: Double {
         guard totalSessions > 0 else { return 0 }
         return totalFuelUsed / Double(totalSessions)
@@ -80,10 +81,9 @@ struct WarmUpStatistics {
     }
     
     var estimatedMonthlySavings: Double {
-        // Compare actual usage vs optimal usage
-        let optimalMinutes = totalSessions * 10 // Assume 10 min is optimal
+        let optimalMinutes = totalSessions * 10
         let wastedMinutes = max(0, totalMinutes - optimalMinutes)
-        let wastedFuel = Double(wastedMinutes) * 0.008 // ~0.5L/hour
+        let wastedFuel = Double(wastedMinutes) * 0.008
         return wastedFuel * 1.60
     }
 }
@@ -101,4 +101,23 @@ struct TimeRangeData {
     var daily: [ChartDataPoint] = []
     var weekly: [ChartDataPoint] = []
     var monthly: [ChartDataPoint] = []
+}
+
+struct IdleWasteSession: Identifiable, Codable {
+    let id: String
+    let timestamp: Date
+    let idleSeconds: Int
+    
+    var fuelWasted: Double {
+        let fuelRate = 0.5 / 3600.0
+        return Double(idleSeconds) * fuelRate
+    }
+    
+    var co2Wasted: Double {
+        fuelWasted * 2.3
+    }
+    
+    var costWasted: Double {
+        fuelWasted * 1.60
+    }
 }

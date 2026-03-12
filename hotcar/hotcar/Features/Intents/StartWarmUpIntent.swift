@@ -68,8 +68,7 @@ struct StartWarmUpIntent: AppIntent {
         )
         
         // Start timer
-        let timer = CountdownTimer()
-        timer.start(
+        CountdownTimer.shared.start(
             minutes: warmUpTime,
             vehicleName: vehicle.name,
             vehicleId: vehicle.id,

@@ -92,6 +92,12 @@ struct SettingsView: View {
             
             Toggle("Notifications", isOn: $viewModel.showNotifications)
             
+            Picker("Notification Sound", selection: $viewModel.notificationSound) {
+                ForEach(AppSettings.NotificationSound.allCases, id: \.self) { sound in
+                    Text(sound.displayName).tag(sound)
+                }
+            }
+            
             Toggle("Haptic Feedback", isOn: $viewModel.hapticFeedback)
         }
     }

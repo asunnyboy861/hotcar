@@ -11,6 +11,10 @@ import Combine
 
 final class CountdownTimer: ObservableObject {
     
+    // MARK: - Singleton
+    
+    static let shared = CountdownTimer()
+    
     // MARK: - Published Properties
     
     @Published var timeRemaining: Int
@@ -64,7 +68,7 @@ final class CountdownTimer: ObservableObject {
     
     // MARK: - Initialization
     
-    init(totalMinutes: Int = 0) {
+    private init(totalMinutes: Int = 0) {
         self.totalTime = totalMinutes * 60
         self.timeRemaining = totalMinutes * 60
         loadPersistedState()
@@ -88,13 +92,10 @@ final class CountdownTimer: ObservableObject {
         isPaused = false
         state = .running(startTime: Date(), duration: TimeInterval(totalTime))
         
-        // Track session data
         currentSessionStartTime = Date()
         
-        // Haptic feedback on start
         hapticService.timerStart()
         
-        // Schedule notification
         Task {
             await notificationService.scheduleTimerCompleteNotification(
                 minutes: minutes,
@@ -102,18 +103,24 @@ final class CountdownTimer: ObservableObject {
             )
         }
         
-        // Update widget
         widgetService.updateTimerState(
             isRunning: true,
             remaining: timeRemaining,
             vehicleName: vehicleName
         )
         
+        if #available(iOS 16.1, *) {
+            startLiveActivity(
+                vehicleId: vehicleId.isEmpty ? UUID().uuidString : vehicleId,
+                vehicleName: vehicleName,
+                temperature: temperature
+            )
+        }
+        
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             self?.tick()
         }
         
-        // Persist state
         persistState()
     }
     
@@ -165,23 +172,23 @@ final class CountdownTimer: ObservableObject {
         timer?.invalidate()
         timer = nil
         
-        // Cancel notifications
         Task {
             await notificationService.cancelAllTimerNotifications()
         }
         
-        // Update widget
         widgetService.updateTimerState(
             isRunning: false,
             remaining: 0,
             vehicleName: ""
         )
         
-        // Clear session data
+        if #available(iOS 16.1, *) {
+            endLiveActivity()
+        }
+        
         currentSessionStartTime = nil
         currentVehicleId = nil
         
-        // Clear persisted state
         clearPersistedState()
     }
     
@@ -202,7 +209,6 @@ final class CountdownTimer: ObservableObject {
         
         timeRemaining -= 1
         
-        // Update widget every 10 seconds
         if timeRemaining % 10 == 0 {
             widgetService.updateTimerState(
                 isRunning: true,
@@ -211,14 +217,16 @@ final class CountdownTimer: ObservableObject {
             )
         }
         
-        // Haptic feedback every minute
         if timeRemaining > 0 && timeRemaining % 60 == 0 {
             hapticService.timerTick()
         }
         
-        // Persist state every 30 seconds
         if timeRemaining % 30 == 0 {
             persistState()
+        }
+        
+        if #available(iOS 16.1, *) {
+            updateLiveActivity()
         }
     }
     

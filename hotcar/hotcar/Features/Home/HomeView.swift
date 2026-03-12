@@ -14,6 +14,7 @@ struct HomeView: View {
     
     @StateObject private var viewModel = HomeViewModel()
     @State private var showingVehicleList = false
+    @State private var showingSettings = false
     
     // MARK: - Body
     
@@ -43,6 +44,13 @@ struct HomeView: View {
             .navigationTitle("HotCar")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: { showingSettings = true }) {
+                        Image(systemName: "gearshape.fill")
+                            .foregroundColor(.hotCarPrimary)
+                    }
+                }
+                
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: { showingVehicleList = true }) {
                         Image(systemName: "car.fill")
@@ -52,6 +60,9 @@ struct HomeView: View {
             }
             .sheet(isPresented: $showingVehicleList) {
                 VehicleListView()
+            }
+            .sheet(isPresented: $showingSettings) {
+                SettingsView()
             }
         }
         .onAppear {
@@ -96,10 +107,42 @@ struct HomeView: View {
             TimerButton(
                 minutes: viewModel.calculatedWarmUpTime,
                 isActive: viewModel.isTimerActive,
+                isPaused: viewModel.isTimerPaused,
+                progress: viewModel.timerProgress,
+                remainingSeconds: viewModel.timeRemaining,
                 action: {
                     viewModel.toggleTimer()
                 }
             )
+            
+            // Manual time adjustment buttons
+            if !viewModel.isTimerActive {
+                HStack(spacing: 16) {
+                    Button(action: { viewModel.adjustTimerTime(by: -5) }) {
+                        HStack {
+                            Image(systemName: "minus.circle")
+                            Text("-5 min")
+                        }
+                        .padding(.horizontal, .hotCarSpacingMd)
+                        .padding(.vertical, .hotCarSpacingSm)
+                        .background(Color.backgroundCard)
+                        .foregroundColor(.hotCarPrimary)
+                        .cornerRadius(.hotCarRadiusMd)
+                    }
+                    
+                    Button(action: { viewModel.adjustTimerTime(by: 5) }) {
+                        HStack {
+                            Image(systemName: "plus.circle")
+                            Text("+5 min")
+                        }
+                        .padding(.horizontal, .hotCarSpacingMd)
+                        .padding(.vertical, .hotCarSpacingSm)
+                        .background(Color.backgroundCard)
+                        .foregroundColor(.hotCarPrimary)
+                        .cornerRadius(.hotCarRadiusMd)
+                    }
+                }
+            }
             
             // Warm-up advice
             if let advice = viewModel.warmUpAdvice {

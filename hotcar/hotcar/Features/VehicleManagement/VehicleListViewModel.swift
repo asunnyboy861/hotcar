@@ -57,4 +57,9 @@ final class VehicleListViewModel: ObservableObject {
             await vehicleService.deleteVehicle(vehicle)
         }
     }
+    
+    func getReminderCount(for vehicleId: String) -> Int {
+        let reminders = MaintenanceService.shared.getScheduledReminders(for: vehicleId)
+        return reminders.filter { !$0.isCompleted }.count
+    }
 }

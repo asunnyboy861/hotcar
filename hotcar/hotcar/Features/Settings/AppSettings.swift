@@ -18,6 +18,7 @@ struct AppSettings: Codable {
     var autoStartTimer: Bool = false
     var showNotifications: Bool = true
     var hapticFeedback: Bool = true
+    var notificationSound: NotificationSound = .default
     
     // Vehicle
     var primaryVehicleId: String?
@@ -29,6 +30,13 @@ struct AppSettings: Codable {
     // Privacy
     var analyticsEnabled: Bool = true
     var crashReportingEnabled: Bool = true
+    
+    // Weather Alerts
+    var enableWeatherAlerts: Bool = true
+    var extremeColdThreshold: Double = -30.0
+    var temperatureDropThreshold: Double = 10.0
+    var enableMorningForecast: Bool = true
+    var morningForecastTime: String = "20:00"
     
     // MARK: - Initialization with Region Detection
     
@@ -109,6 +117,31 @@ struct AppSettings: Codable {
             }
         }
     }
+    
+    enum NotificationSound: String, Codable, CaseIterable {
+        case `default` = "default"
+        case gentle = "gentle"
+        case loud = "loud"
+        case silent = "silent"
+        
+        var displayName: String {
+            switch self {
+            case .default: return "Default"
+            case .gentle: return "Gentle"
+            case .loud: return "Loud"
+            case .silent: return "Silent"
+            }
+        }
+        
+        var soundName: String? {
+            switch self {
+            case .default: return nil
+            case .gentle: return "note"
+            case .loud: return "alarm"
+            case .silent: return ""
+            }
+        }
+    }
 }
 
 // MARK: - Settings Service
@@ -182,6 +215,11 @@ final class SettingsService: ObservableObject {
     
     func updateHapticFeedback(_ enabled: Bool) {
         settings.hapticFeedback = enabled
+        saveSettings()
+    }
+    
+    func updateNotificationSound(_ sound: AppSettings.NotificationSound) {
+        settings.notificationSound = sound
         saveSettings()
     }
     

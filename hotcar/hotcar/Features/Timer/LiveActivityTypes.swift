@@ -4,6 +4,7 @@
 //
 //  HotCar Shared - Live Activity Types
 //  Shared types for Live Activity support
+//  NOTE: This file should be added to both main app and Widget Extension targets
 //
 
 import Foundation

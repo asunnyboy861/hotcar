@@ -105,6 +105,49 @@ final class StatisticsService: ObservableObject {
         return jsonString
     }
     
+    func recordIdleWaste(sessionId: String, idleSeconds: Int) async {
+        let session = IdleWasteSession(
+            id: sessionId,
+            timestamp: Date(),
+            idleSeconds: idleSeconds
+        )
+        
+        idleSessions.append(session)
+        saveIdleSessions()
+        calculateIdleStatistics()
+    }
+    
+    // MARK: - Idle Waste Tracking
+    
+    private var idleSessions: [IdleWasteSession] = []
+    private let idleStorageKey = "com.hotcar.idlesessions"
+    
+    private func loadIdleSessions() {
+        guard let data = UserDefaults.standard.data(forKey: idleStorageKey),
+              let decoded = try? JSONDecoder().decode([IdleWasteSession].self, from: data) else {
+            idleSessions = []
+            return
+        }
+        idleSessions = decoded
+    }
+    
+    private func saveIdleSessions() {
+        if let encoded = try? JSONEncoder().encode(idleSessions) {
+            UserDefaults.standard.set(encoded, forKey: idleStorageKey)
+        }
+    }
+    
+    private func calculateIdleStatistics() {
+        let totalSeconds = idleSessions.reduce(0) { $0 + $1.idleSeconds }
+        let fuelRate = 0.5 / 3600.0
+        let fuelWasted = Double(totalSeconds) * fuelRate
+        let co2Wasted = fuelWasted * 2.3
+        
+        IdleAlertService.shared.totalIdleSeconds = totalSeconds
+        IdleAlertService.shared.fuelWasted = fuelWasted
+        IdleAlertService.shared.co2Wasted = co2Wasted
+    }
+    
     // MARK: - Private Methods
     
     private func loadSessionsSync() {
@@ -139,15 +182,18 @@ final class StatisticsService: ObservableObject {
             stats.averageTemperature = sessions.reduce(0) { $0 + $1.outsideTemperature } / Double(stats.totalSessions)
         }
         
-        // Sessions by vehicle
+        let optimalMinutes = sessions.count * 10
+        let savedMinutes = max(0, optimalMinutes - stats.totalMinutes)
+        let savedFuelPerMinute = 0.008
+        stats.totalFuelSaved = Double(savedMinutes) * savedFuelPerMinute
+        stats.totalCO2Saved = stats.totalFuelSaved * 2.3
+        
         stats.sessionsByVehicle = Dictionary(grouping: sessions) { $0.vehicleName }
             .mapValues { $0.count }
         
-        // Sessions by vehicle type
         stats.sessionsByType = Dictionary(grouping: sessions) { $0.vehicleType }
             .mapValues { $0.count }
         
-        // Daily sessions (last 7 days)
         let calendar = Calendar.current
         let today = Date()
         for dayOffset in 0..<7 {
@@ -158,7 +204,6 @@ final class StatisticsService: ObservableObject {
             }
         }
         
-        // Weekly sessions (last 4 weeks)
         for weekOffset in 0..<4 {
             if let date = calendar.date(byAdding: .weekOfYear, value: -weekOffset, to: today) {
                 let key = formatWeekKey(date)
@@ -169,7 +214,6 @@ final class StatisticsService: ObservableObject {
             }
         }
         
-        // Monthly sessions (last 6 months)
         for monthOffset in 0..<6 {
             if let date = calendar.date(byAdding: .month, value: -monthOffset, to: today) {
                 let key = formatMonthKey(date)

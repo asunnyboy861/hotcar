@@ -55,16 +55,37 @@ struct VehicleListView: View {
     
     private var vehicleList: some View {
         List(viewModel.vehicles) { vehicle in
-            VehicleRow(
-                vehicle: vehicle,
-                isPrimary: vehicle.isPrimary,
-                onTogglePrimary: {
-                    viewModel.setPrimaryVehicle(vehicle)
-                },
-                onDelete: {
-                    viewModel.deleteVehicle(vehicle)
+            VStack(alignment: .leading, spacing: 8) {
+                VehicleRow(
+                    vehicle: vehicle,
+                    isPrimary: vehicle.isPrimary,
+                    onTogglePrimary: {
+                        viewModel.setPrimaryVehicle(vehicle)
+                    },
+                    onDelete: {
+                        viewModel.deleteVehicle(vehicle)
+                    }
+                )
+                
+                NavigationLink(destination: MaintenanceRemindersView(vehicleId: vehicle.id)) {
+                    HStack {
+                        Image(systemName: "wrench.and.screwdriver")
+                            .foregroundColor(.hotCarSecondary)
+                        VStack(alignment: .leading) {
+                            Text("Maintenance Reminders")
+                                .font(.hotCarCaption)
+                                .foregroundColor(.hotCarSecondary)
+                            Text("\(viewModel.getReminderCount(for: vehicle.id)) reminders")
+                                .font(.hotCarFootnote)
+                                .foregroundColor(.textSecondary)
+                        }
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .font(.caption)
+                            .foregroundColor(.textMuted)
+                    }
                 }
-            )
+            }
         }
         .listStyle(.insetGrouped)
     }

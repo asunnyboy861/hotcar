@@ -9,6 +9,7 @@
 import Foundation
 import UserNotifications
 
+@MainActor
 final class NotificationService: NSObject {
     
     // MARK: - Singleton
@@ -59,7 +60,22 @@ final class NotificationService: NSObject {
         let content = UNMutableNotificationContent()
         content.title = "Warm-Up Complete!"
         content.body = "Your \(vehicleName) has been warming up for \(minutes) minutes. Ready to go!"
-        content.sound = .default
+        
+        let settings = SettingsService.shared.settings
+        if let soundName = settings.notificationSound.soundName {
+            if soundName.isEmpty {
+                content.sound = nil
+            } else {
+                content.sound = UNNotificationSound(named: UNNotificationSoundName(soundName))
+            }
+        } else {
+            content.sound = .default
+        }
+        
+        if settings.hapticFeedback {
+            content.sound = UNNotificationSound.defaultCritical
+        }
+        
         content.categoryIdentifier = NotificationCategory.timerComplete.rawValue
         
         // Add action buttons

@@ -10,7 +10,7 @@ import ActivityKit
 import WidgetKit
 import SwiftUI
 
-// MARK: - Activity Attributes
+// MARK: - Activity Attributes (Shared with main app)
 
 struct WarmUpActivityAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
@@ -40,12 +40,9 @@ struct WarmUpActivityAttributes: ActivityAttributes {
 struct WarmUpLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: WarmUpActivityAttributes.self) { context in
-            // Lock screen / banner UI
             LockScreenLiveActivityView(context: context)
         } dynamicIsland: { context in
-            // Dynamic Island UI
             DynamicIsland {
-                // Expanded view
                 DynamicIslandExpandedRegion(.leading) {
                     HStack {
                         Image(systemName: "car.fill")
@@ -98,7 +95,6 @@ struct LockScreenLiveActivityView: View {
     
     var body: some View {
         VStack(spacing: 12) {
-            // Header
             HStack {
                 Image(systemName: "car.fill")
                     .foregroundColor(.orange)
@@ -115,7 +111,6 @@ struct LockScreenLiveActivityView: View {
                     .foregroundColor(.primary)
             }
             
-            // Progress bar
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
                     RoundedRectangle(cornerRadius: 4)
@@ -134,7 +129,6 @@ struct LockScreenLiveActivityView: View {
             }
             .frame(height: 8)
             
-            // Status
             HStack {
                 Text(context.state.isPaused ? "Paused" : "Warming up...")
                     .font(.caption)

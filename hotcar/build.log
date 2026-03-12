@@ -1,0 +1,745 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project hotcar.xcodeproj -scheme hotcar -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" clean build
+
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS Simulator, arch:arm64, id:7E1B2D26-9DF7-423D-A8C7-24722D099AA8, OS:18.4, name:iPhone 15 }
+{ platform:iOS Simulator, arch:x86_64, id:7E1B2D26-9DF7-423D-A8C7-24722D099AA8, OS:18.4, name:iPhone 15 }
+ComputePackagePrebuildTargetDependencyGraph
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+** CLEAN SUCCEEDED **
+
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS Simulator, arch:arm64, id:7E1B2D26-9DF7-423D-A8C7-24722D099AA8, OS:18.4, name:iPhone 15 }
+{ platform:iOS Simulator, arch:x86_64, id:7E1B2D26-9DF7-423D-A8C7-24722D099AA8, OS:18.4, name:iPhone 15 }
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (2 targets)
+    Target 'hotcar' in project 'hotcar'
+        ➜ Explicit dependency on target 'hotcarWidgetExtension' in project 'hotcar'
+    Target 'hotcarWidgetExtension' in project 'hotcar' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.4.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Assets.xcassets
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: ffae90076958f179e38c911202a57d25
+Build description path: /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/XCBuildData/ffae90076958f179e38c911202a57d25.xcbuilddata
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.4.sdk /Volumes/Untitled/xcode_data/deriveddata/SDKStatCaches.noindex/iphonesimulator18.4-22E235-71825a6d136aa4733edcbe86ece5525b.sdkstatcache
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar.xcodeproj
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.4.sdk -o /Volumes/Untitled/xcode_data/deriveddata/SDKStatCaches.noindex/iphonesimulator18.4-22E235-71825a6d136aa4733edcbe86ece5525b.sdkstatcache
+
+CreateBuildDirectory /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar.xcodeproj
+    builtin-create-build-directory /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products
+
+CreateBuildDirectory /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar.xcodeproj
+    builtin-create-build-directory /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex
+
+CreateBuildDirectory /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar.xcodeproj
+    builtin-create-build-directory /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator
+
+CreateBuildDirectory /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar.xcodeproj
+    builtin-create-build-directory /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar-460444ec89036ad3b0c05a7fae8b725e-VFS-iphonesimulator/all-product-headers.yaml
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar.xcodeproj
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar-460444ec89036ad3b0c05a7fae8b725e-VFS-iphonesimulator/all-product-headers.yaml
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar.hmap (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar.hmap
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-project-headers.hmap (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-project-headers.hmap
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar.DependencyMetadataFileList (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar.DependencyMetadataFileList
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension.hmap (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension.hmap
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar.DependencyStaticMetadataFileList (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar.DependencyStaticMetadataFileList
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-own-target-headers.hmap (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-own-target-headers.hmap
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-all-target-headers.hmap (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-all-target-headers.hmap
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-generated-files.hmap (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-generated-files.hmap
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-all-non-framework-target-headers.hmap (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-all-non-framework-target-headers.hmap
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension.DependencyStaticMetadataFileList (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension.DependencyStaticMetadataFileList
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension.DependencyMetadataFileList (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension.DependencyMetadataFileList
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-project-headers.hmap (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-project-headers.hmap
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-own-target-headers.hmap (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-own-target-headers.hmap
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-generated-files.hmap (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-generated-files.hmap
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-all-target-headers.hmap (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-all-target-headers.hmap
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-DebugEntryPoint-normal-arm64.txt (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-DebugEntryPoint-normal-arm64.txt
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-DebugDylibPath-normal-arm64.txt (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-DebugDylibPath-normal-arm64.txt
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-DebugDylibInstallName-normal-arm64.txt (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-DebugDylibInstallName-normal-arm64.txt
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension_const_extract_protocols.json (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension_const_extract_protocols.json
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension.SwiftFileList (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension.SwiftFileList
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension.SwiftConstValuesFileList (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension.SwiftConstValuesFileList
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension.LinkFileList (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension.LinkFileList
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension-OutputFileMap.json (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension-OutputFileMap.json
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-all-non-framework-target-headers.hmap (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-all-non-framework-target-headers.hmap
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/DerivedSources/Entitlements-Simulated.plist (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/DerivedSources/Entitlements-Simulated.plist
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-DebugDylibPath-normal-arm64.txt (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-DebugDylibPath-normal-arm64.txt
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-DebugDylibInstallName-normal-arm64.txt (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-DebugDylibInstallName-normal-arm64.txt
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/hotcar.LinkFileList (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/hotcar.LinkFileList
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/hotcar_const_extract_protocols.json (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/hotcar_const_extract_protocols.json
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/hotcar-OutputFileMap.json (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/hotcar-OutputFileMap.json
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/hotcar.SwiftFileList (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/hotcar.SwiftFileList
+
+MkDir /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/hotcarWidgetExtension.appex (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    /bin/mkdir -p /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/hotcarWidgetExtension.appex
+
+MkDir /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/hotcar.app (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    /bin/mkdir -p /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/hotcar.app
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/hotcar.SwiftConstValuesFileList (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/hotcar.SwiftConstValuesFileList
+
+WriteAuxiliaryFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/DerivedSources/Entitlements-Simulated.plist (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    write-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/DerivedSources/Entitlements-Simulated.plist
+
+MkDir /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/hotcar.app/PlugIns (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    /bin/mkdir -p /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/hotcar.app/PlugIns
+
+ProcessProductPackaging /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcarWidgetExtension.entitlements /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension.appex.xcent (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+    Entitlements:
+    
+    {
+}
+    
+    builtin-productPackagingUtility /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcarWidgetExtension.entitlements -entitlements -format xml -o /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension.appex.xcent
+
+ProcessProductPackaging /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcarWidgetExtension.entitlements /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension.appex-Simulated.xcent (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+    Entitlements:
+    
+    {
+    "application-identifier" = "JP4TN5PTS3.com.zzoutuo.hotcar.hotcarWidget";
+    "com.apple.security.application-groups" =     (
+        "group.com.zzoutuo.hotcar"
+    );
+}
+    
+    builtin-productPackagingUtility /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcarWidgetExtension.entitlements -entitlements -format xml -o /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension.appex-Simulated.xcent
+
+ProcessProductPackagingDER /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension.appex-Simulated.xcent /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension.appex-Simulated.xcent.der (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    /usr/bin/derq query -f xml -i /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension.appex-Simulated.xcent -o /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension.appex-Simulated.xcent.der --raw
+
+ProcessProductPackagingDER /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension.appex.xcent /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension.appex.xcent.der (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    /usr/bin/derq query -f xml -i /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension.appex.xcent -o /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension.appex.xcent.der --raw
+
+MkDir /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/assetcatalog_output/unthinned (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    /bin/mkdir -p /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/assetcatalog_output/unthinned
+
+Ld /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/hotcarWidgetExtension.appex/__preview.dylib normal (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios18.4-simulator -dynamiclib -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.4.sdk -O0 -L/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator -F/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator -install_name @rpath/hotcarWidgetExtension.debug.dylib -dead_strip -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -debug_variant -Xlinker -dependency_info -Xlinker /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension_dependency_info.dat -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __entitlements -Xlinker /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension.appex-Simulated.xcent -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __ents_der -Xlinker /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension.appex-Simulated.xcent.der -Xlinker -no_adhoc_codesign -o /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/hotcarWidgetExtension.appex/__preview.dylib
+
+MkDir /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/assetcatalog_output/thinned (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    /bin/mkdir -p /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/assetcatalog_output/thinned
+
+GenerateAssetSymbols /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcarWidget/Assets.xcassets (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    /Applications/Xcode.app/Contents/Developer/usr/bin/actool /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcarWidget/Assets.xcassets --compile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/hotcarWidgetExtension.appex --output-format human-readable-text --notices --warnings --export-dependency-info /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/assetcatalog_dependencies --output-partial-info-plist /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/assetcatalog_generated_info.plist --accent-color AccentColor --widget-background-color WidgetBackground --compress-pngs --enable-on-demand-resources NO --standalone-icon-behavior all --development-region en --target-device iphone --target-device ipad --minimum-deployment-target 18.4 --platform iphonesimulator --bundle-identifier com.zzoutuo.hotcar.hotcarWidget --generate-swift-asset-symbols /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/DerivedSources/GeneratedAssetSymbols.swift --generate-objc-asset-symbols /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/DerivedSources/GeneratedAssetSymbols.h --generate-asset-symbol-index /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/DerivedSources/GeneratedAssetSymbols-Index.plist
+/* com.apple.actool.compilation-results */
+/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/DerivedSources/GeneratedAssetSymbols-Index.plist
+/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/DerivedSources/GeneratedAssetSymbols.h
+/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/DerivedSources/GeneratedAssetSymbols.swift
+
+
+CompileAssetCatalogVariant thinned /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/hotcarWidgetExtension.appex /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcarWidget/Assets.xcassets (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    /Applications/Xcode.app/Contents/Developer/usr/bin/actool /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcarWidget/Assets.xcassets --compile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/assetcatalog_output/thinned --output-format human-readable-text --notices --warnings --export-dependency-info /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/assetcatalog_dependencies_thinned --output-partial-info-plist /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/assetcatalog_generated_info.plist_thinned --accent-color AccentColor --widget-background-color WidgetBackground --compress-pngs --enable-on-demand-resources NO --standalone-icon-behavior all --filter-for-thinning-device-configuration iPhone15,4 --filter-for-device-os-version 18.4 --development-region en --target-device iphone --target-device ipad --minimum-deployment-target 18.4 --platform iphonesimulator
+/* com.apple.actool.compilation-results */
+/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/assetcatalog_generated_info.plist_thinned
+
+
+SwiftDriver hotcarWidgetExtension normal arm64 com.apple.xcode.tools.swift.compiler (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    builtin-SwiftDriver -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name hotcarWidgetExtension -Onone -enforce-exclusivity\=checked @/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.4.sdk -target arm64-apple-ios18.4-simulator -g -module-cache-path /Volumes/Untitled/xcode_data/deriveddata/ModuleCache.noindex -Xfrontend -serialize-debugging-options -application-extension -profile-coverage-mapping -profile-generate -enable-testing -index-store-path /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Index.noindex/DataStore -swift-version 5 -I /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator -F /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator -emit-localized-strings -emit-localized-strings-path /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64 -c -j10 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Volumes/Untitled/xcode_data/deriveddata/SDKStatCaches.noindex/iphonesimulator18.4-22E235-71825a6d136aa4733edcbe86ece5525b.sdkstatcache -output-file-map /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension.swiftmodule -validate-clang-modules-once -clang-build-session-file /Volumes/Untitled/xcode_data/deriveddata/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension_const_extract_protocols.json -Xcc -iquote -Xcc /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-generated-files.hmap -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-own-target-headers.hmap -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-all-target-headers.hmap -Xcc -iquote -Xcc /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-project-headers.hmap -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/include -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/DerivedSources-normal/arm64 -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/DerivedSources/arm64 -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension-Swift.h -working-directory /Volumes/Untitled/app/20260309/hotcar/hotcar -experimental-emit-module-separately -disable-cmo
+
+SwiftCompile normal arm64 Compiling\ GeneratedAssetSymbols.swift /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'hotcarWidgetExtension' from project 'hotcar')
+SwiftCompile normal arm64 /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 Compiling\ hotcarWidgetLiveActivity.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcarWidget/hotcarWidgetLiveActivity.swift (in target 'hotcarWidgetExtension' from project 'hotcar')
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcarWidget/hotcarWidgetLiveActivity.swift (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 Compiling\ hotcarWidget.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcarWidget/hotcarWidget.swift (in target 'hotcarWidgetExtension' from project 'hotcar')
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcarWidget/hotcarWidget.swift (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ hotcarWidgetExtension (in target 'hotcarWidgetExtension' from project 'hotcar')
+
+EmitSwiftModule normal arm64 (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 Compiling\ AppIntent.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcarWidget/AppIntent.swift (in target 'hotcarWidgetExtension' from project 'hotcar')
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcarWidget/AppIntent.swift (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 Compiling\ hotcarWidgetBundle.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcarWidget/hotcarWidgetBundle.swift (in target 'hotcarWidgetExtension' from project 'hotcar')
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcarWidget/hotcarWidgetBundle.swift (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 Compiling\ hotcarWidgetControl.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcarWidget/hotcarWidgetControl.swift (in target 'hotcarWidgetExtension' from project 'hotcar')
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcarWidget/hotcarWidgetControl.swift (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+LinkAssetCatalog /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcarWidget/Assets.xcassets (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    builtin-linkAssetCatalog --thinned /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/assetcatalog_output/thinned --thinned-dependencies /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/assetcatalog_dependencies_thinned --thinned-info-plist-content /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/assetcatalog_generated_info.plist_thinned --unthinned /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/assetcatalog_output/unthinned --unthinned-dependencies /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/assetcatalog_dependencies_unthinned --unthinned-info-plist-content /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/assetcatalog_generated_info.plist_unthinned --output /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/hotcarWidgetExtension.appex --plist-output /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/assetcatalog_generated_info.plist
+
+ProcessInfoPlistFile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/hotcarWidgetExtension.appex/Info.plist /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcarWidget/Info.plist (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    builtin-infoPlistUtility /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcarWidget/Info.plist -producttype com.apple.product-type.app-extension -expandbuildsettings -format binary -platform iphonesimulator -additionalcontentfile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/assetcatalog_generated_info.plist -o /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/hotcarWidgetExtension.appex/Info.plist
+
+SwiftDriverJobDiscovery normal arm64 Compiling GeneratedAssetSymbols.swift (in target 'hotcarWidgetExtension' from project 'hotcar')
+
+SwiftDriverJobDiscovery normal arm64 Compiling hotcarWidgetBundle.swift (in target 'hotcarWidgetExtension' from project 'hotcar')
+
+SwiftDriverJobDiscovery normal arm64 Compiling AppIntent.swift (in target 'hotcarWidgetExtension' from project 'hotcar')
+
+SwiftDriverJobDiscovery normal arm64 Compiling hotcarWidgetControl.swift (in target 'hotcarWidgetExtension' from project 'hotcar')
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for hotcarWidgetExtension (in target 'hotcarWidgetExtension' from project 'hotcar')
+
+SwiftDriver\ Compilation\ Requirements hotcarWidgetExtension normal arm64 com.apple.xcode.tools.swift.compiler (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name hotcarWidgetExtension -Onone -enforce-exclusivity\=checked @/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.4.sdk -target arm64-apple-ios18.4-simulator -g -module-cache-path /Volumes/Untitled/xcode_data/deriveddata/ModuleCache.noindex -Xfrontend -serialize-debugging-options -application-extension -profile-coverage-mapping -profile-generate -enable-testing -index-store-path /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Index.noindex/DataStore -swift-version 5 -I /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator -F /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator -emit-localized-strings -emit-localized-strings-path /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64 -c -j10 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Volumes/Untitled/xcode_data/deriveddata/SDKStatCaches.noindex/iphonesimulator18.4-22E235-71825a6d136aa4733edcbe86ece5525b.sdkstatcache -output-file-map /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension.swiftmodule -validate-clang-modules-once -clang-build-session-file /Volumes/Untitled/xcode_data/deriveddata/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension_const_extract_protocols.json -Xcc -iquote -Xcc /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-generated-files.hmap -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-own-target-headers.hmap -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-all-target-headers.hmap -Xcc -iquote -Xcc /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-project-headers.hmap -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/include -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/DerivedSources-normal/arm64 -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/DerivedSources/arm64 -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension-Swift.h -working-directory /Volumes/Untitled/app/20260309/hotcar/hotcar -experimental-emit-module-separately -disable-cmo
+
+SwiftMergeGeneratedHeaders /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/DerivedSources/hotcarWidgetExtension-Swift.h /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension-Swift.h (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    builtin-swiftHeaderTool -arch arm64 /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension-Swift.h -o /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/DerivedSources/hotcarWidgetExtension-Swift.h
+
+Copy /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/hotcarWidgetExtension.swiftmodule/arm64-apple-ios-simulator.abi.json /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension.abi.json (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension.abi.json /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/hotcarWidgetExtension.swiftmodule/arm64-apple-ios-simulator.abi.json
+
+Copy /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/hotcarWidgetExtension.swiftmodule/arm64-apple-ios-simulator.swiftmodule /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension.swiftmodule (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension.swiftmodule /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/hotcarWidgetExtension.swiftmodule/arm64-apple-ios-simulator.swiftmodule
+
+Copy /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/hotcarWidgetExtension.swiftmodule/arm64-apple-ios-simulator.swiftdoc /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension.swiftdoc (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension.swiftdoc /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/hotcarWidgetExtension.swiftmodule/arm64-apple-ios-simulator.swiftdoc
+
+Copy /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/hotcarWidgetExtension.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension.swiftsourceinfo (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension.swiftsourceinfo /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/hotcarWidgetExtension.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo
+
+ProcessProductPackaging /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/hotcar.entitlements /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar.app-Simulated.xcent (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+    Entitlements:
+    
+    {
+    "application-identifier" = "JP4TN5PTS3.com.zzoutuo.hotcar";
+    "com.apple.security.application-groups" =     (
+        "group.com.zzoutuo.hotcar"
+    );
+}
+    
+    builtin-productPackagingUtility /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/hotcar.entitlements -entitlements -format xml -o /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar.app-Simulated.xcent
+
+ProcessProductPackaging /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/hotcar.entitlements /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar.app.xcent (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+    Entitlements:
+    
+    {
+}
+    
+    builtin-productPackagingUtility /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/hotcar.entitlements -entitlements -format xml -o /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar.app.xcent
+
+ProcessProductPackagingDER /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar.app-Simulated.xcent /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar.app-Simulated.xcent.der (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    /usr/bin/derq query -f xml -i /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar.app-Simulated.xcent -o /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar.app-Simulated.xcent.der --raw
+
+ProcessProductPackagingDER /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar.app.xcent /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar.app.xcent.der (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    /usr/bin/derq query -f xml -i /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar.app.xcent -o /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar.app.xcent.der --raw
+
+GenerateAssetSymbols /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Assets.xcassets (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    /Applications/Xcode.app/Contents/Developer/usr/bin/actool /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Assets.xcassets --compile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/hotcar.app --output-format human-readable-text --notices --warnings --export-dependency-info /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/assetcatalog_dependencies --output-partial-info-plist /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/assetcatalog_generated_info.plist --app-icon AppIcon --accent-color AccentColor --compress-pngs --enable-on-demand-resources YES --development-region en --target-device iphone --target-device ipad --minimum-deployment-target 17.0 --platform iphonesimulator --bundle-identifier com.zzoutuo.hotcar --generate-swift-asset-symbols /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/DerivedSources/GeneratedAssetSymbols.swift --generate-objc-asset-symbols /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/DerivedSources/GeneratedAssetSymbols.h --generate-asset-symbol-index /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/DerivedSources/GeneratedAssetSymbols-Index.plist
+/* com.apple.actool.compilation-results */
+/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/DerivedSources/GeneratedAssetSymbols-Index.plist
+/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/DerivedSources/GeneratedAssetSymbols.h
+/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/DerivedSources/GeneratedAssetSymbols.swift
+
+
+MkDir /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/assetcatalog_output/thinned (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    /bin/mkdir -p /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/assetcatalog_output/thinned
+
+MkDir /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/assetcatalog_output/unthinned (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    /bin/mkdir -p /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/assetcatalog_output/unthinned
+
+CompileAssetCatalogVariant thinned /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/hotcar.app /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Assets.xcassets (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    /Applications/Xcode.app/Contents/Developer/usr/bin/actool /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Assets.xcassets --compile /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/assetcatalog_output/thinned --output-format human-readable-text --notices --warnings --export-dependency-info /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/assetcatalog_dependencies_thinned --output-partial-info-plist /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/assetcatalog_generated_info.plist_thinned --app-icon AppIcon --accent-color AccentColor --compress-pngs --enable-on-demand-resources YES --filter-for-thinning-device-configuration iPhone15,4 --filter-for-device-os-version 18.4 --development-region en --target-device iphone --target-device ipad --minimum-deployment-target 17.0 --platform iphonesimulator
+/* com.apple.actool.compilation-results */
+/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/assetcatalog_generated_info.plist_thinned
+
+
+SwiftDriverJobDiscovery normal arm64 Compiling hotcarWidget.swift (in target 'hotcarWidgetExtension' from project 'hotcar')
+
+SwiftDriver hotcar normal arm64 com.apple.xcode.tools.swift.compiler (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    builtin-SwiftDriver -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name hotcar -Onone -enforce-exclusivity\=checked @/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/hotcar.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.4.sdk -target arm64-apple-ios17.0-simulator -g -module-cache-path /Volumes/Untitled/xcode_data/deriveddata/ModuleCache.noindex -Xfrontend -serialize-debugging-options -profile-coverage-mapping -profile-generate -enable-testing -index-store-path /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Index.noindex/DataStore -swift-version 5 -I /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator -F /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator -emit-localized-strings -emit-localized-strings-path /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64 -c -j10 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Volumes/Untitled/xcode_data/deriveddata/SDKStatCaches.noindex/iphonesimulator18.4-22E235-71825a6d136aa4733edcbe86ece5525b.sdkstatcache -output-file-map /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/hotcar-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/hotcar.swiftmodule -validate-clang-modules-once -clang-build-session-file /Volumes/Untitled/xcode_data/deriveddata/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/hotcar_const_extract_protocols.json -Xcc -iquote -Xcc /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-generated-files.hmap -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-own-target-headers.hmap -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-all-target-headers.hmap -Xcc -iquote -Xcc /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-project-headers.hmap -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/include -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/DerivedSources-normal/arm64 -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/DerivedSources/arm64 -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/hotcar-Swift.h -working-directory /Volumes/Untitled/app/20260309/hotcar/hotcar -experimental-emit-module-separately -disable-cmo
+
+LinkAssetCatalog /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Assets.xcassets (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    builtin-linkAssetCatalog --thinned /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/assetcatalog_output/thinned --thinned-dependencies /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/assetcatalog_dependencies_thinned --thinned-info-plist-content /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/assetcatalog_generated_info.plist_thinned --unthinned /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/assetcatalog_output/unthinned --unthinned-dependencies /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/assetcatalog_dependencies_unthinned --unthinned-info-plist-content /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/assetcatalog_generated_info.plist_unthinned --output /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/hotcar.app --plist-output /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/assetcatalog_generated_info.plist
+
+SwiftCompile normal arm64 Compiling\ SmartReminderService.swift,\ AddVehicleViewModel.swift,\ MaintenanceReminderModel.swift,\ VehicleListView.swift,\ CheckTemperatureIntent.swift,\ WarmUpSession.swift,\ MaintenanceRemindersViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/SmartReminder/SmartReminderService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/AddVehicleViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/MaintenanceReminderModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/VehicleListView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Intents/CheckTemperatureIntent.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Statistics/WarmUpSession.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/MaintenanceRemindersViewModel.swift (in target 'hotcar' from project 'hotcar')
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/SmartReminder/SmartReminderService.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/AddVehicleViewModel.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/MaintenanceReminderModel.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/VehicleListView.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Intents/CheckTemperatureIntent.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Statistics/WarmUpSession.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/MaintenanceRemindersViewModel.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 Compiling\ VINDecoder.swift,\ VehicleListViewModel.swift,\ EditVehicleViewModel.swift,\ TimerButton.swift,\ WeatherAlertView.swift,\ WidgetDataService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/VINDecoder.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/VehicleListViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/EditVehicleViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Components/TimerButton.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WeatherIntegration/WeatherAlertView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Settings/WidgetDataService.swift (in target 'hotcar' from project 'hotcar')
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/VINDecoder.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/VehicleListViewModel.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/EditVehicleViewModel.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Components/TimerButton.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WeatherIntegration/WeatherAlertView.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Settings/WidgetDataService.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 Compiling\ ShareData.swift,\ SettingsView.swift,\ HomeViewModel.swift,\ LiveActivityTypes.swift,\ TeslaAuthView.swift,\ EditVehicleView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Sharing/ShareData.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Settings/SettingsView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Home/HomeViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/LiveActivityTypes.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/RemoteStart/TeslaAuthView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/EditVehicleView.swift (in target 'hotcar' from project 'hotcar')
+Failed frontend command:
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift-frontend -frontend -c /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Statistics/StatisticsView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Components/StatCard.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/EngineIdleMonitor.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/TimerState.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Theme/ColorPalette.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/MaintenanceService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Statistics/StatisticsService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/SmartReminder/SmartReminderService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/AddVehicleViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/MaintenanceReminderModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/VehicleListView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Intents/CheckTemperatureIntent.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Statistics/WarmUpSession.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/MaintenanceRemindersViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/SmartReminder/SmartReminderModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/MaintenanceRemindersView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/RemoteStart/RemoteStartViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WeatherIntegration/WeatherService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/SmartReminder/SmartReminderView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/IdleAlertService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WarmUpCalculator/WarmUpCalculatorView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WeatherIntegration/WeatherAlertModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Home/HomeView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/LiveActivityManager.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/AddMaintenanceReminderViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Settings/AppSettings.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/VehicleService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/HapticFeedbackService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/AddMaintenanceReminderView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WarmUpCalculator/WarmUpCalculatorViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Location/LocationService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Intents/VehicleEntity.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/NotificationService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Components/TemperatureDisplay.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Settings/SettingsViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WeatherIntegration/WeatherAlertService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Location/GeoFenceModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/VehicleModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/RemoteStart/TeslaAPIService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Components/VehicleCard.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Location/GeoFenceView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Intents/StartWarmUpIntent.swift -primary-file /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Sharing/ShareData.swift -primary-file /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Settings/SettingsView.swift -primary-file /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Home/HomeViewModel.swift -primary-file /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/LiveActivityTypes.swift -primary-file /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/RemoteStart/TeslaAuthView.swift -primary-file /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/EditVehicleView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/VINDecoder.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/VehicleListViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/EditVehicleViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Components/TimerButton.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WeatherIntegration/WeatherAlertView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Settings/WidgetDataService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Theme/Typography.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Location/GeoFenceService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/RemoteStart/RemoteStartView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Statistics/StatisticsViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/AddVehicleView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/hotcarApp.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Sharing/ShareService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Theme/Spacing.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WarmUpCalculator/WarmUpCalculationEngine.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/CountdownTimer.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/ContentView.swift /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/DerivedSources/GeneratedAssetSymbols.swift -supplementary-output-file-map /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/supplementaryOutputs-7 -emit-localized-strings -emit-localized-strings-path /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64 -target arm64-apple-ios17.0-simulator -Xllvm -aarch64-use-tbi -enable-objc-interop -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.4.sdk -I /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator -F /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator -no-color-diagnostics -enable-testing -g -debug-info-format\=dwarf -dwarf-version\=4 -module-cache-path /Volumes/Untitled/xcode_data/deriveddata/ModuleCache.noindex -profile-generate -profile-coverage-mapping -swift-version 5 -enforce-exclusivity\=checked -Onone -D DEBUG -serialize-debugging-options -const-gather-protocols-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/hotcar_const_extract_protocols.json -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -empty-abi-descriptor -validate-clang-modules-once -clang-build-session-file /Volumes/Untitled/xcode_data/deriveddata/ModuleCache.noindex/Session.modulevalidation -Xcc -working-directory -Xcc /Volumes/Untitled/app/20260309/hotcar/hotcar -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift -enable-anonymous-context-mangled-names -file-compilation-dir /Volumes/Untitled/app/20260309/hotcar/hotcar -Xcc -ivfsstatcache -Xcc /Volumes/Untitled/xcode_data/deriveddata/SDKStatCaches.noindex/iphonesimulator18.4-22E235-71825a6d136aa4733edcbe86ece5525b.sdkstatcache -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/swift-overrides.hmap -Xcc -iquote -Xcc /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-generated-files.hmap -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-own-target-headers.hmap -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-all-target-headers.hmap -Xcc -iquote -Xcc /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-project-headers.hmap -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/include -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/DerivedSources-normal/arm64 -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/DerivedSources/arm64 -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/DerivedSources -Xcc -DDEBUG\=1 -module-name hotcar -frontend-parseable-output -disable-clang-spi -target-sdk-version 18.4 -target-sdk-name iphonesimulator18.4 -external-plugin-path /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib/swift/host/plugins\#/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/swift-plugin-server -external-plugin-path /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/local/lib/swift/host/plugins\#/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/swift-plugin-server -in-process-plugin-server-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/libSwiftInProcPluginServer.dylib -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/local/lib/swift/host/plugins -o /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/ShareData.o -o /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/SettingsView.o -o /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/HomeViewModel.o -o /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/LiveActivityTypes.o -o /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/TeslaAuthView.o -o /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/EditVehicleView.o -index-unit-output-path /hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/ShareData.o -index-unit-output-path /hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/SettingsView.o -index-unit-output-path /hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/HomeViewModel.o -index-unit-output-path /hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/LiveActivityTypes.o -index-unit-output-path /hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/TeslaAuthView.o -index-unit-output-path /hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/EditVehicleView.o -index-store-path /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Index.noindex/DataStore -index-system-modules
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Sharing/ShareData.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Settings/SettingsView.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Home/HomeViewModel.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+/Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Home/HomeViewModel.swift:111:24: error: value of type 'CountdownTimer' has no member '$progress'
+        countdownTimer.$progress
+        ~~~~~~~~~~~~~~ ^~~~~~~~~
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/LiveActivityTypes.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/RemoteStart/TeslaAuthView.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/EditVehicleView.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 Compiling\ Typography.swift,\ GeoFenceService.swift,\ RemoteStartView.swift,\ StatisticsViewModel.swift,\ AddVehicleView.swift,\ hotcarApp.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Theme/Typography.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Location/GeoFenceService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/RemoteStart/RemoteStartView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Statistics/StatisticsViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/AddVehicleView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/hotcarApp.swift (in target 'hotcar' from project 'hotcar')
+Failed frontend command:
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift-frontend -frontend -c /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Statistics/StatisticsView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Components/StatCard.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/EngineIdleMonitor.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/TimerState.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Theme/ColorPalette.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/MaintenanceService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Statistics/StatisticsService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/SmartReminder/SmartReminderService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/AddVehicleViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/MaintenanceReminderModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/VehicleListView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Intents/CheckTemperatureIntent.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Statistics/WarmUpSession.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/MaintenanceRemindersViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/SmartReminder/SmartReminderModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/MaintenanceRemindersView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/RemoteStart/RemoteStartViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WeatherIntegration/WeatherService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/SmartReminder/SmartReminderView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/IdleAlertService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WarmUpCalculator/WarmUpCalculatorView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WeatherIntegration/WeatherAlertModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Home/HomeView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/LiveActivityManager.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/AddMaintenanceReminderViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Settings/AppSettings.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/VehicleService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/HapticFeedbackService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/AddMaintenanceReminderView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WarmUpCalculator/WarmUpCalculatorViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Location/LocationService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Intents/VehicleEntity.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/NotificationService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Components/TemperatureDisplay.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Settings/SettingsViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WeatherIntegration/WeatherAlertService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Location/GeoFenceModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/VehicleModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/RemoteStart/TeslaAPIService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Components/VehicleCard.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Location/GeoFenceView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Intents/StartWarmUpIntent.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Sharing/ShareData.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Settings/SettingsView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Home/HomeViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/LiveActivityTypes.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/RemoteStart/TeslaAuthView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/EditVehicleView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/VINDecoder.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/VehicleListViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/EditVehicleViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Components/TimerButton.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WeatherIntegration/WeatherAlertView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Settings/WidgetDataService.swift -primary-file /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Theme/Typography.swift -primary-file /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Location/GeoFenceService.swift -primary-file /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/RemoteStart/RemoteStartView.swift -primary-file /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Statistics/StatisticsViewModel.swift -primary-file /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/AddVehicleView.swift -primary-file /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/hotcarApp.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Sharing/ShareService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Theme/Spacing.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WarmUpCalculator/WarmUpCalculationEngine.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/CountdownTimer.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/ContentView.swift /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/DerivedSources/GeneratedAssetSymbols.swift -supplementary-output-file-map /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/supplementaryOutputs-9 -emit-localized-strings -emit-localized-strings-path /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64 -target arm64-apple-ios17.0-simulator -Xllvm -aarch64-use-tbi -enable-objc-interop -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.4.sdk -I /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator -F /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator -no-color-diagnostics -enable-testing -g -debug-info-format\=dwarf -dwarf-version\=4 -module-cache-path /Volumes/Untitled/xcode_data/deriveddata/ModuleCache.noindex -profile-generate -profile-coverage-mapping -swift-version 5 -enforce-exclusivity\=checked -Onone -D DEBUG -serialize-debugging-options -const-gather-protocols-file /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/hotcar_const_extract_protocols.json -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -empty-abi-descriptor -validate-clang-modules-once -clang-build-session-file /Volumes/Untitled/xcode_data/deriveddata/ModuleCache.noindex/Session.modulevalidation -Xcc -working-directory -Xcc /Volumes/Untitled/app/20260309/hotcar/hotcar -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift -enable-anonymous-context-mangled-names -file-compilation-dir /Volumes/Untitled/app/20260309/hotcar/hotcar -Xcc -ivfsstatcache -Xcc /Volumes/Untitled/xcode_data/deriveddata/SDKStatCaches.noindex/iphonesimulator18.4-22E235-71825a6d136aa4733edcbe86ece5525b.sdkstatcache -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/swift-overrides.hmap -Xcc -iquote -Xcc /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-generated-files.hmap -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-own-target-headers.hmap -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-all-target-headers.hmap -Xcc -iquote -Xcc /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/hotcar-project-headers.hmap -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/include -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/DerivedSources-normal/arm64 -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/DerivedSources/arm64 -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/DerivedSources -Xcc -DDEBUG\=1 -module-name hotcar -frontend-parseable-output -disable-clang-spi -target-sdk-version 18.4 -target-sdk-name iphonesimulator18.4 -external-plugin-path /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib/swift/host/plugins\#/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/swift-plugin-server -external-plugin-path /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/local/lib/swift/host/plugins\#/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/swift-plugin-server -in-process-plugin-server-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/libSwiftInProcPluginServer.dylib -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/local/lib/swift/host/plugins -o /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/Typography.o -o /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/GeoFenceService.o -o /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/RemoteStartView.o -o /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/StatisticsViewModel.o -o /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/AddVehicleView.o -o /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/hotcarApp.o -index-unit-output-path /hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/Typography.o -index-unit-output-path /hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/GeoFenceService.o -index-unit-output-path /hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/RemoteStartView.o -index-unit-output-path /hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/StatisticsViewModel.o -index-unit-output-path /hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/AddVehicleView.o -index-unit-output-path /hotcar.build/Debug-iphonesimulator/hotcar.build/Objects-normal/arm64/hotcarApp.o -index-store-path /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Index.noindex/DataStore -index-system-modules
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Theme/Typography.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Location/GeoFenceService.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+/Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Location/GeoFenceService.swift:64:36: error: cannot use mutating member on immutable value: 'isEnabled' is a 'let' constant
+            zones[index].isEnabled.toggle()
+            ~~~~~~~~~~~~~~~~~~~~~~ ^
+/Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Location/GeoFenceModel.swift:17:5: note: change 'let' to 'var' to make it mutable
+    let isEnabled: Bool
+    ^~~
+    var
+/Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Location/GeoFenceService.swift:80:47: error: cannot convert value of type 'CLLocationCoordinate2D' to expected argument type 'CLLocation'
+                    self?.checkGeoFences(for: location)
+                                              ^
+/Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Location/GeoFenceModel.swift:12:8: error: type 'GeoFenceZone' does not conform to protocol 'Decodable'
+struct GeoFenceZone: Identifiable, Codable {
+       ^
+Swift.Decodable.init:2:1: note: protocol requires initializer 'init(from:)' with type 'Decodable'
+init(from decoder: any Decoder) throws}
+^
+/Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Location/GeoFenceModel.swift:15:9: note: cannot automatically synthesize 'Decodable' because 'CLLocationCoordinate2D' does not conform to 'Decodable'
+    let center: CLLocationCoordinate2D
+        ^
+/Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Location/GeoFenceModel.swift:12:8: error: type 'GeoFenceZone' does not conform to protocol 'Decodable'
+struct GeoFenceZone: Identifiable, Codable {
+       ^
+Swift.Decodable.init:2:1: note: protocol requires initializer 'init(from:)' with type 'Decodable'
+init(from decoder: any Decoder) throws}
+^
+/Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Location/GeoFenceModel.swift:15:9: note: cannot automatically synthesize 'Decodable' because 'CLLocationCoordinate2D' does not conform to 'Decodable'
+    let center: CLLocationCoordinate2D
+        ^
+/Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Location/GeoFenceService.swift:160:30: error: value of type 'CLLocationCoordinate2D' has no member 'coordinate'
+            center: location.coordinate,
+                    ~~~~~~~~ ^~~~~~~~~~
+/Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Location/GeoFenceService.swift:179:30: error: value of type 'CLLocationCoordinate2D' has no member 'coordinate'
+            center: location.coordinate,
+                    ~~~~~~~~ ^~~~~~~~~~
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/RemoteStart/RemoteStartView.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Statistics/StatisticsViewModel.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/AddVehicleView.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/hotcarApp.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 Compiling\ WeatherAlertModel.swift,\ HomeView.swift,\ LiveActivityManager.swift,\ AddMaintenanceReminderViewModel.swift,\ AppSettings.swift,\ VehicleService.swift,\ HapticFeedbackService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WeatherIntegration/WeatherAlertModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Home/HomeView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/LiveActivityManager.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/AddMaintenanceReminderViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Settings/AppSettings.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/VehicleService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/HapticFeedbackService.swift (in target 'hotcar' from project 'hotcar')
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WeatherIntegration/WeatherAlertModel.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Home/HomeView.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/LiveActivityManager.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/AddMaintenanceReminderViewModel.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Settings/AppSettings.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/VehicleService.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/HapticFeedbackService.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 Compiling\ AddMaintenanceReminderView.swift,\ WarmUpCalculatorViewModel.swift,\ LocationService.swift,\ VehicleEntity.swift,\ NotificationService.swift,\ TemperatureDisplay.swift,\ SettingsViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/AddMaintenanceReminderView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WarmUpCalculator/WarmUpCalculatorViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Location/LocationService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Intents/VehicleEntity.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/NotificationService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Components/TemperatureDisplay.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Settings/SettingsViewModel.swift (in target 'hotcar' from project 'hotcar')
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/AddMaintenanceReminderView.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WarmUpCalculator/WarmUpCalculatorViewModel.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Location/LocationService.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Intents/VehicleEntity.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/NotificationService.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Components/TemperatureDisplay.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Settings/SettingsViewModel.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 Compiling\ SmartReminderModel.swift,\ MaintenanceRemindersView.swift,\ RemoteStartViewModel.swift,\ WeatherService.swift,\ SmartReminderView.swift,\ IdleAlertService.swift,\ WarmUpCalculatorView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/SmartReminder/SmartReminderModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/MaintenanceRemindersView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/RemoteStart/RemoteStartViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WeatherIntegration/WeatherService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/SmartReminder/SmartReminderView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/IdleAlertService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WarmUpCalculator/WarmUpCalculatorView.swift (in target 'hotcar' from project 'hotcar')
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/SmartReminder/SmartReminderModel.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/MaintenanceRemindersView.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/RemoteStart/RemoteStartViewModel.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WeatherIntegration/WeatherService.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/SmartReminder/SmartReminderView.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/IdleAlertService.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WarmUpCalculator/WarmUpCalculatorView.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 Compiling\ ShareService.swift,\ Spacing.swift,\ WarmUpCalculationEngine.swift,\ CountdownTimer.swift,\ ContentView.swift,\ GeneratedAssetSymbols.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Sharing/ShareService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Theme/Spacing.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WarmUpCalculator/WarmUpCalculationEngine.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/CountdownTimer.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/ContentView.swift /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'hotcar' from project 'hotcar')
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Sharing/ShareService.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Theme/Spacing.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/WarmUpCalculator/WarmUpCalculationEngine.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/CountdownTimer.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/ContentView.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcar.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 Compiling\ StatisticsView.swift,\ StatCard.swift,\ EngineIdleMonitor.swift,\ TimerState.swift,\ ColorPalette.swift,\ MaintenanceService.swift,\ StatisticsService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Statistics/StatisticsView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Components/StatCard.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/EngineIdleMonitor.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/TimerState.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Theme/ColorPalette.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/MaintenanceService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Statistics/StatisticsService.swift (in target 'hotcar' from project 'hotcar')
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Statistics/StatisticsView.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Components/StatCard.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/EngineIdleMonitor.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/TimerState.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Theme/ColorPalette.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/MaintenanceService.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Statistics/StatisticsService.swift (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ hotcar (in target 'hotcar' from project 'hotcar')
+
+EmitSwiftModule normal arm64 (in target 'hotcar' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    
+
+SwiftDriverJobDiscovery normal arm64 Compiling hotcarWidgetLiveActivity.swift (in target 'hotcarWidgetExtension' from project 'hotcar')
+
+SwiftDriver\ Compilation hotcarWidgetExtension normal arm64 com.apple.xcode.tools.swift.compiler (in target 'hotcarWidgetExtension' from project 'hotcar')
+    cd /Volumes/Untitled/app/20260309/hotcar/hotcar
+    builtin-Swift-Compilation -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name hotcarWidgetExtension -Onone -enforce-exclusivity\=checked @/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.4.sdk -target arm64-apple-ios18.4-simulator -g -module-cache-path /Volumes/Untitled/xcode_data/deriveddata/ModuleCache.noindex -Xfrontend -serialize-debugging-options -application-extension -profile-coverage-mapping -profile-generate -enable-testing -index-store-path /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Index.noindex/DataStore -swift-version 5 -I /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator -F /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator -emit-localized-strings -emit-localized-strings-path /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64 -c -j10 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Volumes/Untitled/xcode_data/deriveddata/SDKStatCaches.noindex/iphonesimulator18.4-22E235-71825a6d136aa4733edcbe86ece5525b.sdkstatcache -output-file-map /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension.swiftmodule -validate-clang-modules-once -clang-build-session-file /Volumes/Untitled/xcode_data/deriveddata/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension_const_extract_protocols.json -Xcc -iquote -Xcc /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-generated-files.hmap -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-own-target-headers.hmap -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-all-target-headers.hmap -Xcc -iquote -Xcc /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/hotcarWidgetExtension-project-headers.hmap -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Products/Debug-iphonesimulator/include -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/DerivedSources-normal/arm64 -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/DerivedSources/arm64 -Xcc -I/Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Volumes/Untitled/xcode_data/deriveddata/hotcar-dnuitaqsiuquwefsvjfksehvdtcv/Build/Intermediates.noindex/hotcar.build/Debug-iphonesimulator/hotcarWidgetExtension.build/Objects-normal/arm64/hotcarWidgetExtension-Swift.h -working-directory /Volumes/Untitled/app/20260309/hotcar/hotcar -experimental-emit-module-separately -disable-cmo
+
+** BUILD FAILED **
+
+
+The following build commands failed:
+	SwiftCompile normal arm64 Compiling\ ShareData.swift,\ SettingsView.swift,\ HomeViewModel.swift,\ LiveActivityTypes.swift,\ TeslaAuthView.swift,\ EditVehicleView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Sharing/ShareData.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Settings/SettingsView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Home/HomeViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Timer/LiveActivityTypes.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/RemoteStart/TeslaAuthView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/EditVehicleView.swift (in target 'hotcar' from project 'hotcar')
+	SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Home/HomeViewModel.swift (in target 'hotcar' from project 'hotcar')
+	SwiftCompile normal arm64 Compiling\ Typography.swift,\ GeoFenceService.swift,\ RemoteStartView.swift,\ StatisticsViewModel.swift,\ AddVehicleView.swift,\ hotcarApp.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/UI/Theme/Typography.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Location/GeoFenceService.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/RemoteStart/RemoteStartView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Statistics/StatisticsViewModel.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/VehicleManagement/AddVehicleView.swift /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/hotcarApp.swift (in target 'hotcar' from project 'hotcar')
+	SwiftCompile normal arm64 /Volumes/Untitled/app/20260309/hotcar/hotcar/hotcar/Features/Location/GeoFenceService.swift (in target 'hotcar' from project 'hotcar')
+	Building project hotcar with scheme hotcar
+(5 failures)

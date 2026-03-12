@@ -15,6 +15,7 @@ struct TemperatureDisplay: View {
     let temperature: Double
     let showUnit: Bool
     let size: DisplaySize
+    let unit: AppSettings.TemperatureUnit
     
     enum DisplaySize {
         case small
@@ -27,11 +28,13 @@ struct TemperatureDisplay: View {
     init(
         temperature: Double,
         showUnit: Bool = true,
-        size: DisplaySize = .large
+        size: DisplaySize = .large,
+        unit: AppSettings.TemperatureUnit = .celsius
     ) {
         self.temperature = temperature
         self.showUnit = showUnit
         self.size = size
+        self.unit = unit
     }
     
     // MARK: - Body
@@ -50,17 +53,21 @@ struct TemperatureDisplay: View {
     
     private var temperatureText: some View {
         HStack(alignment: .firstTextBaseline, spacing: size.unitSpacing) {
-            Text(String(format: "%.0f", temperature))
+            Text(String(format: "%.0f", displayTemperature))
                 .font(size.font)
                 .fontWeight(size.fontWeight)
             
             if showUnit {
-                Text("°C")
+                Text(unit.symbol)
                     .font(size.unitFont)
                     .foregroundColor(.textMuted)
             }
         }
         .foregroundColor(temperatureColor)
+    }
+    
+    private var displayTemperature: Double {
+        unit.convert(from: temperature)
     }
     
     // MARK: - Condition Text

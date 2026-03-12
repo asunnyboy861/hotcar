@@ -57,7 +57,7 @@ final class WarmUpCalculatorViewModel: ObservableObject {
     private let weatherService = WeatherService.shared
     private let vehicleService = VehicleService.shared
     private let locationService = LocationService.shared
-    private let countdownTimer = CountdownTimer()
+    private let countdownTimer = CountdownTimer.shared
     private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Initialization

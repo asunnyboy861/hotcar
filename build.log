@@ -1,0 +1,5 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project hotcar.xcodeproj -scheme hotcar -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" clean build
+
+2026-03-11 23:10:13.762 xcodebuild[2308:637531] Writing error result bundle to /var/folders/kv/_3_57zf93pb8mwxmypyt8qn00000gn/T/ResultBundle_2026-11-03_23-10-0013.xcresult
+xcodebuild: error: 'hotcar.xcodeproj' does not exist.

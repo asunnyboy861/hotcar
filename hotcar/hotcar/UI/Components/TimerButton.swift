@@ -15,19 +15,23 @@ struct TimerButton: View {
     let minutes: Int
     let isActive: Bool
     let isPaused: Bool
+    let progress: Double
+    let remainingSeconds: Int
     let action: () -> Void
-    
-    // MARK: - Initialization
     
     init(
         minutes: Int,
         isActive: Bool = false,
         isPaused: Bool = false,
+        progress: Double = 0.0,
+        remainingSeconds: Int = 0,
         action: @escaping () -> Void
     ) {
         self.minutes = minutes
         self.isActive = isActive
         self.isPaused = isPaused
+        self.progress = progress
+        self.remainingSeconds = remainingSeconds
         self.action = action
     }
     
@@ -36,16 +40,11 @@ struct TimerButton: View {
     var body: some View {
         Button(action: action) {
             VStack(spacing: 16) {
-                // Time Display
+                progressRingOverlay
+                
                 timeText
                 
-                // Status Text
                 statusText
-                
-                // Optional: Progress Ring (for active state)
-                if isActive {
-                    progressRing
-                }
             }
             .frame(maxWidth: .infinity)
             .frame(height: 180)
@@ -62,9 +61,19 @@ struct TimerButton: View {
     // MARK: - Time Display
     
     private var timeText: some View {
-        Text("\(minutes) min")
+        Text(displayTime)
             .font(.hotCarTimer)
             .fontWeight(.medium)
+    }
+    
+    private var displayTime: String {
+        if isActive && remainingSeconds > 0 {
+            let mins = remainingSeconds / 60
+            let secs = remainingSeconds % 60
+            return String(format: "%02d:%02d", mins, secs)
+        } else {
+            return "\(minutes) min"
+        }
     }
     
     // MARK: - Status Text
@@ -83,18 +92,36 @@ struct TimerButton: View {
         }
     }
     
-    // MARK: - Progress Ring (Placeholder for now)
+    // MARK: - Progress Ring Overlay
     
-    private var progressRing: some View {
-        Circle()
-            .stroke(Color.white.opacity(0.3), lineWidth: 4)
-            .frame(width: 60, height: 60)
-            .overlay(
-                Circle()
-                    .trim(from: 0, to: 0.7)
-                    .stroke(Color.white, lineWidth: 4)
-                    .rotationEffect(.degrees(-90))
-            )
+    private var progressRingOverlay: some View {
+        ZStack {
+            Circle()
+                .stroke(Color.white.opacity(0.2), lineWidth: 8)
+                .frame(width: 140, height: 140)
+            
+            Circle()
+                .trim(from: 0, to: isActive ? progress : 0)
+                .stroke(
+                    Color.white,
+                    style: StrokeStyle(lineWidth: 8, lineCap: .round)
+                )
+                .frame(width: 140, height: 140)
+                .rotationEffect(.degrees(-90))
+                .animation(.linear(duration: 0.5), value: progress)
+            
+            if isActive {
+                VStack(spacing: 4) {
+                    Image(systemName: isPaused ? "pause.fill" : "flame.fill")
+                        .font(.system(size: 24))
+                    
+                    Text("\(Int(progress * 100))%")
+                        .font(.system(size: 14, weight: .medium))
+                }
+                .foregroundColor(.white)
+            }
+        }
+        .frame(height: 80)
     }
     
     // MARK: - Button Background
@@ -133,13 +160,24 @@ struct TimerButton: View {
 }
 
 #Preview("Active") {
-    TimerButton(minutes: 12, isActive: true) {}
+    TimerButton(
+        minutes: 12,
+        isActive: true,
+        progress: 0.35,
+        remainingSeconds: 420
+    ) {}
         .padding()
         .background(Color.backgroundPrimary)
 }
 
 #Preview("Paused") {
-    TimerButton(minutes: 12, isActive: true, isPaused: true) {}
+    TimerButton(
+        minutes: 12,
+        isActive: true,
+        isPaused: true,
+        progress: 0.5,
+        remainingSeconds: 360
+    ) {}
         .padding()
         .background(Color.backgroundPrimary)
 }

@@ -23,6 +23,10 @@ final class HomeViewModel: ObservableObject {
     @Published var fuelSaved: Double = 0.0
     @Published var fuelUsed: Double = 0.0
     
+    @Published var timeRemaining: Int = 0
+    @Published var timerProgress: Double = 0.0
+    @Published var isTimerPaused: Bool = false
+    
     // MARK: - Computed Properties
     
     var calculatedWarmUpTime: Int {
@@ -76,23 +80,46 @@ final class HomeViewModel: ObservableObject {
     private let vehicleService = VehicleService.shared
     private let widgetService = WidgetDataService.shared
     private let locationService = LocationService.shared
+    private let countdownTimer = CountdownTimer.shared
     private var cancellables = Set<AnyCancellable>()
-    
-    // MARK: - Initialization
     
     init() {
         setupBindings()
         loadVehicle()
+        setupTimerBindings()
     }
     
     // MARK: - Setup
     
     private func setupBindings() {
-        // Listen for vehicle changes
         vehicleService.$vehicles
             .receive(on: RunLoop.main)
             .sink { [weak self] vehicles in
                 self?.primaryVehicle = vehicles.first { $0.isPrimary } ?? vehicles.first
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func setupTimerBindings() {
+        countdownTimer.$timeRemaining
+            .receive(on: RunLoop.main)
+            .sink { [weak self] time in
+                self?.timeRemaining = time
+                self?.timerProgress = self?.countdownTimer.progress ?? 0
+            }
+            .store(in: &cancellables)
+        
+        countdownTimer.$isPaused
+            .receive(on: RunLoop.main)
+            .sink { [weak self] isPaused in
+                self?.isTimerPaused = isPaused
+            }
+            .store(in: &cancellables)
+        
+        countdownTimer.$isRunning
+            .receive(on: RunLoop.main)
+            .sink { [weak self] isRunning in
+                self?.isTimerActive = isRunning
             }
             .store(in: &cancellables)
     }
@@ -141,26 +168,51 @@ final class HomeViewModel: ObservableObject {
     }
     
     func toggleTimer() {
-        isTimerActive.toggle()
-        
         if isTimerActive {
-            // Start timer logic
-            startTimer()
-        } else {
-            // Stop timer logic
             stopTimer()
+        } else {
+            startTimer()
         }
     }
     
-    // MARK: - Timer Logic
-    
     private func startTimer() {
-        // TODO: Implement actual timer with countdown
-        print("Starting timer for \(calculatedWarmUpTime) minutes")
+        guard let vehicle = primaryVehicle,
+              let temperature = currentTemperature else {
+            return
+        }
+        
+        let minutes = calculatedWarmUpTime
+        
+        countdownTimer.start(
+            minutes: minutes,
+            vehicleName: vehicle.name,
+            vehicleId: vehicle.id,
+            temperature: temperature
+        )
+        
+        updateFuelStats()
     }
     
     private func stopTimer() {
-        // TODO: Implement timer stop
-        print("Stopping timer")
+        countdownTimer.stop()
+    }
+    
+    func pauseTimer() {
+        countdownTimer.pause()
+    }
+    
+    func resumeTimer() {
+        countdownTimer.resume()
+    }
+    
+    func adjustTimerTime(by minutes: Int) {
+        let newMinutes = max(1, calculatedWarmUpTime + minutes)
+        countdownTimer.reset(minutes: newMinutes)
+    }
+    
+    private func updateFuelStats() {
+        let stats = StatisticsService.shared.statistics
+        fuelSaved = stats.totalFuelSaved
+        fuelUsed = stats.totalFuelUsed
     }
 }

@@ -19,6 +19,7 @@ final class SettingsViewModel: ObservableObject {
     @Published var autoStartTimer: Bool = false
     @Published var showNotifications: Bool = true
     @Published var hapticFeedback: Bool = true
+    @Published var notificationSound: AppSettings.NotificationSound = .default
     @Published var darkMode: AppSettings.DarkModeSetting = .system
     @Published var analyticsEnabled: Bool = true
     @Published var crashReportingEnabled: Bool = true
@@ -50,6 +51,7 @@ final class SettingsViewModel: ObservableObject {
         autoStartTimer = settingsService.settings.autoStartTimer
         showNotifications = settingsService.settings.showNotifications
         hapticFeedback = settingsService.settings.hapticFeedback
+        notificationSound = settingsService.settings.notificationSound
         darkMode = settingsService.settings.darkMode
         analyticsEnabled = settingsService.settings.analyticsEnabled
         crashReportingEnabled = settingsService.settings.crashReportingEnabled
@@ -61,6 +63,7 @@ final class SettingsViewModel: ObservableObject {
         settingsService.updateAutoStartTimer(autoStartTimer)
         settingsService.updateNotifications(showNotifications)
         settingsService.updateHapticFeedback(hapticFeedback)
+        settingsService.updateNotificationSound(notificationSound)
         settingsService.updateDarkMode(darkMode)
     }
     
