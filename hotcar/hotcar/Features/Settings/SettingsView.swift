@@ -14,6 +14,8 @@ struct SettingsView: View {
     @StateObject private var viewModel = SettingsViewModel()
     @Environment(\.dismiss) private var dismiss
     @State private var showingContactSupport = false
+    @State private var showingExportSheet = false
+    @State private var exportFileURL: URL?
     
     // MARK: - Body
     
@@ -47,6 +49,11 @@ struct SettingsView: View {
             .sheet(isPresented: $showingContactSupport) {
                 ContactSupportView()
             }
+            .sheet(isPresented: $showingExportSheet) {
+                if let url = exportFileURL {
+                    ShareSheet(activityItems: [url])
+                }
+            }
         }
     }
     
@@ -58,6 +65,9 @@ struct SettingsView: View {
                 ForEach(AppSettings.TemperatureUnit.allCases, id: \.self) { unit in
                     Text(unit.displayName).tag(unit)
                 }
+            }
+            .onChange(of: viewModel.temperatureUnit) { _ in
+                viewModel.triggerSave()
             }
             
             Stepper(
@@ -71,6 +81,9 @@ struct SettingsView: View {
                     Text("\(Int(viewModel.defaultTargetTemp))°")
                         .foregroundColor(.textSecondary)
                 }
+            }
+            .onChange(of: viewModel.defaultTargetTemp) { _ in
+                viewModel.triggerSave()
             }
         }
     }
@@ -91,18 +104,33 @@ struct SettingsView: View {
                         .foregroundColor(.textSecondary)
                 }
             }
+            .onChange(of: viewModel.defaultTimerDuration) { _ in
+                viewModel.triggerSave()
+            }
             
             Toggle("Auto-start Timer", isOn: $viewModel.autoStartTimer)
+                .onChange(of: viewModel.autoStartTimer) { _ in
+                    viewModel.triggerSave()
+                }
             
             Toggle("Notifications", isOn: $viewModel.showNotifications)
+                .onChange(of: viewModel.showNotifications) { _ in
+                    viewModel.triggerSave()
+                }
             
             Picker("Notification Sound", selection: $viewModel.notificationSound) {
                 ForEach(AppSettings.NotificationSound.allCases, id: \.self) { sound in
                     Text(sound.displayName).tag(sound)
                 }
             }
+            .onChange(of: viewModel.notificationSound) { _ in
+                viewModel.triggerSave()
+            }
             
             Toggle("Haptic Feedback", isOn: $viewModel.hapticFeedback)
+                .onChange(of: viewModel.hapticFeedback) { _ in
+                    viewModel.triggerSave()
+                }
         }
     }
     
@@ -114,6 +142,9 @@ struct SettingsView: View {
                 ForEach(AppSettings.DarkModeSetting.allCases, id: \.self) { mode in
                     Text(mode.displayName).tag(mode)
                 }
+            }
+            .onChange(of: viewModel.darkMode) { _ in
+                viewModel.triggerSave()
             }
         }
     }
@@ -127,7 +158,7 @@ struct SettingsView: View {
             Toggle("Crash Reporting", isOn: $viewModel.crashReportingEnabled)
             
             Button(action: {
-                viewModel.exportData()
+                exportData()
             }) {
                 HStack {
                     Text("Export My Data")
@@ -210,6 +241,42 @@ struct SettingsView: View {
             }
         }
     }
+    
+    // MARK: - Export Data
+    
+    private func exportData() {
+        let data = viewModel.exportData()
+        
+        // Create temporary file
+        let tempDir = FileManager.default.temporaryDirectory
+        let fileName = "HotCar_Export_\(Date().ISO8601Format()).json"
+        let fileURL = tempDir.appendingPathComponent(fileName)
+        
+        do {
+            try data.write(to: fileURL, atomically: true, encoding: .utf8)
+            exportFileURL = fileURL
+            showingExportSheet = true
+        } catch {
+            print("Failed to create export file: \(error)")
+        }
+    }
+}
+
+// MARK: - Share Sheet
+
+struct ShareSheet: UIViewControllerRepresentable {
+    let activityItems: [Any]
+    let applicationActivities: [UIActivity]? = nil
+    
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        let controller = UIActivityViewController(
+            activityItems: activityItems,
+            applicationActivities: applicationActivities
+        )
+        return controller
+    }
+    
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }
 
 // MARK: - Preview

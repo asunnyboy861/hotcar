@@ -38,8 +38,16 @@ struct AppSettings: Codable {
     var enableMorningForecast: Bool = true
     var morningForecastTime: String = "20:00"
     
+    // MARK: - User Override Tracking
+    
+    /// Tracks whether user has manually overridden the temperature unit
+    /// Used to distinguish between auto region detection and user manual setting
+    var isTemperatureUnitOverridden: Bool = false
+    
     // MARK: - Initialization with Region Detection
     
+    /// Note: This init is only called when creating settings for the first time
+    /// SettingsService controls whether to load saved settings or create new ones
     init() {
         // Detect user's region and set default temperature unit
         let locale = Locale.current
@@ -48,6 +56,7 @@ struct AppSettings: Codable {
         // Use Fahrenheit for US, Liberia, Myanmar; Celsius for others
         let fahrenheitRegions = ["US", "LR", "MM"]
         self.temperatureUnit = fahrenheitRegions.contains(regionCode) ? .fahrenheit : .celsius
+        self.isTemperatureUnitOverridden = false
     }
     
     // MARK: - Nested Types
@@ -168,6 +177,10 @@ final class SettingsService: ObservableObject {
         if let data = UserDefaults.standard.data(forKey: storageKey),
            let decoded = try? JSONDecoder().decode(AppSettings.self, from: data) {
             settings = decoded
+            // For legacy data without override flag, assume user has customized
+            if !decoded.isTemperatureUnitOverridden {
+                settings.isTemperatureUnitOverridden = true
+            }
         } else {
             // Create new settings with region detection
             settings = AppSettings()
@@ -195,6 +208,7 @@ final class SettingsService: ObservableObject {
     
     func updateTemperatureUnit(_ unit: AppSettings.TemperatureUnit) {
         settings.temperatureUnit = unit
+        settings.isTemperatureUnitOverridden = true  // Mark as user overridden
         saveSettings()
     }
     

@@ -21,38 +21,31 @@ struct StatisticsView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(spacing: HotCarSpacing.large) {
-                    // Overview Cards
-                    overviewSection
-                    
-                    // Trend Chart
-                    trendChartSection
-                    
-                    // Activity Chart
-                    chartSection
-                    
-                    // Breakdown
-                    breakdownSection
-                    
-                    // Insights
-                    insightsSection
+            Group {
+                if viewModel.sessions.isEmpty {
+                    // Empty state for new users
+                    StatisticsEmptyStateView {
+                        dismiss()
+                    }
+                } else {
+                    // Normal statistics view
+                    statisticsContent
                 }
-                .padding(.horizontal, HotCarLayout.screenMargin)
-                .padding(.vertical, HotCarSpacing.medium)
             }
             .background(Color.backgroundPrimary)
             .navigationTitle(NSLocalizedString("statistics_title", tableName: "Localizable", comment: "Statistics page title"))
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Picker("Period", selection: $selectedPeriod) {
-                        Text(NSLocalizedString("time_daily", tableName: "Localizable", comment: "Daily time range")).tag(TimeRange.daily)
-                        Text(NSLocalizedString("time_weekly", tableName: "Localizable", comment: "Weekly time range")).tag(TimeRange.weekly)
-                        Text(NSLocalizedString("time_monthly", tableName: "Localizable", comment: "Monthly time range")).tag(TimeRange.monthly)
+                    if !viewModel.sessions.isEmpty {
+                        Picker("Period", selection: $selectedPeriod) {
+                            Text(NSLocalizedString("time_daily", tableName: "Localizable", comment: "Daily time range")).tag(TimeRange.daily)
+                            Text(NSLocalizedString("time_weekly", tableName: "Localizable", comment: "Weekly time range")).tag(TimeRange.weekly)
+                            Text(NSLocalizedString("time_monthly", tableName: "Localizable", comment: "Monthly time range")).tag(TimeRange.monthly)
+                        }
+                        .pickerStyle(.segmented)
+                        .frame(width: 200)
                     }
-                    .pickerStyle(.segmented)
-                    .frame(width: 200)
                 }
             }
         }
@@ -61,6 +54,31 @@ struct StatisticsView: View {
         }
         .onAppear {
             viewModel.loadStatistics()
+        }
+    }
+    
+    @Environment(\.dismiss) private var dismiss
+    
+    private var statisticsContent: some View {
+        ScrollView {
+            VStack(spacing: HotCarSpacing.large) {
+                // Overview Cards
+                overviewSection
+                
+                // Trend Chart
+                trendChartSection
+                
+                // Activity Chart
+                chartSection
+                
+                // Breakdown
+                breakdownSection
+                
+                // Insights
+                insightsSection
+            }
+            .padding(.horizontal, HotCarLayout.screenMargin)
+            .padding(.vertical, HotCarSpacing.medium)
         }
     }
     

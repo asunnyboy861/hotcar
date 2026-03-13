@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Combine
 
 @MainActor
 final class StatisticsService: ObservableObject {
@@ -18,45 +19,58 @@ final class StatisticsService: ObservableObject {
     // MARK: - Published Properties
     
     @Published var sessions: [WarmUpSession] = []
-    @Published var statistics: WarmUpStatistics = WarmUpStatistics()
+    
+    /// Automatically calculated statistics based on sessions
+    /// Updated automatically via Combine when sessions change
+    @Published private(set) var statistics: WarmUpStatistics = WarmUpStatistics()
     
     // MARK: - Dependencies
     
     private let storageKey = "com.hotcar.sessions"
     private let vehicleService = VehicleService.shared
+    private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Initialization
     
     private init() {
         loadSessionsSync()
-        calculateStatistics()
+        setupBindings()
+    }
+    
+    // MARK: - Combine Bindings
+    
+    private func setupBindings() {
+        $sessions
+            .receive(on: RunLoop.main)
+            .sink { [weak self] sessions in
+                self?.calculateStatistics()
+                self?.saveSessions()
+            }
+            .store(in: &cancellables)
     }
     
     // MARK: - Public Methods
     
     func loadSessions() async {
         loadSessionsSync()
-        calculateStatistics()
+        // calculateStatistics() is now called automatically via Combine
     }
     
     func addSession(_ session: WarmUpSession) async {
         sessions.append(session)
-        saveSessions()
-        calculateStatistics()
+        // saveSessions() and calculateStatistics() are now called automatically via Combine
     }
     
     func updateSession(_ session: WarmUpSession) async {
         if let index = sessions.firstIndex(where: { $0.id == session.id }) {
             sessions[index] = session
-            saveSessions()
-            calculateStatistics()
+            // saveSessions() and calculateStatistics() are now called automatically via Combine
         }
     }
     
     func deleteSession(_ session: WarmUpSession) async {
         sessions.removeAll { $0.id == session.id }
-        saveSessions()
-        calculateStatistics()
+        // saveSessions() and calculateStatistics() are now called automatically via Combine
     }
     
     func getSessions(for vehicleId: String) -> [WarmUpSession] {

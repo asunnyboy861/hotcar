@@ -127,10 +127,8 @@ struct ContactSupportView: View {
                     .foregroundColor(.textPrimary)
                     .padding(HotCarSpacing.small)
                     .frame(minHeight: 150)
-                    .background(
-                        RoundedRectangle(cornerRadius: HotCarRadius.medium)
-                            .fill(Color.backgroundSecondary)
-                    )
+                    .background(Color.backgroundSecondary)
+                    .cornerRadius(HotCarRadius.medium)
                     .overlay(
                         RoundedRectangle(cornerRadius: HotCarRadius.medium)
                             .stroke(Color.hotCarPrimary.opacity(viewModel.message.isEmpty ? 0.3 : 0.8), lineWidth: 1)

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Combine
 
 @MainActor
 final class SettingsViewModel: ObservableObject {
@@ -35,11 +36,31 @@ final class SettingsViewModel: ObservableObject {
     // MARK: - Dependencies
     
     private let settingsService = SettingsService.shared
+    private var cancellables = Set<AnyCancellable>()
+    private let saveSubject = PassthroughSubject<Void, Never>()
     
     // MARK: - Initialization
     
     init() {
         loadSettings()
+        setupDebounce()
+    }
+    
+    deinit {
+        // Note: We cannot call actor-isolated methods in deinit
+        // The debounced save will trigger on next app cycle if needed
+        // For critical saves, use saveImmediately() explicitly before dismissal
+    }
+    
+    // MARK: - Setup
+    
+    private func setupDebounce() {
+        saveSubject
+            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+            .sink { [weak self] in
+                self?.performSave()
+            }
+            .store(in: &cancellables)
     }
     
     // MARK: - Public Methods
@@ -57,7 +78,29 @@ final class SettingsViewModel: ObservableObject {
         crashReportingEnabled = settingsService.settings.crashReportingEnabled
     }
     
+    /// Trigger save with debounce
+    /// Call this when settings change (e.g., in onChange modifiers)
+    func triggerSave() {
+        saveSubject.send()
+    }
+    
+    /// Save immediately without debounce
+    /// Use this when app is about to exit or when immediate save is required
+    func saveImmediately() {
+        // Cancel any pending debounced save
+        cancellables.removeAll()
+        performSave()
+        // Re-setup debounce for future changes
+        setupDebounce()
+    }
+    
+    /// Legacy save method - now uses debounce
+    /// Deprecated: Use triggerSave() for normal saves or saveImmediately() for immediate saves
     func saveSettings() {
+        triggerSave()
+    }
+    
+    private func performSave() {
         settingsService.updateTemperatureUnit(temperatureUnit)
         settingsService.updateDefaultTimerDuration(defaultTimerDuration)
         settingsService.updateAutoStartTimer(autoStartTimer)
@@ -67,12 +110,11 @@ final class SettingsViewModel: ObservableObject {
         settingsService.updateDarkMode(darkMode)
     }
     
-    func exportData() {
+    /// Export user data to JSON string
+    /// - Returns: JSON string containing all user data
+    func exportData() -> String {
         // Export user data to JSON
-        let data = StatisticsService.shared.exportData()
-        
-        // Share via UIActivityViewController
-        shareData(data)
+        return StatisticsService.shared.exportData()
     }
     
     func clearAllData() {
@@ -109,14 +151,6 @@ final class SettingsViewModel: ObservableObject {
     }
     
     // MARK: - Private Methods
-    
-    private func shareData(_ data: String) {
-        guard let url = URL(string: "data:text/plain,\(data.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")") else {
-            return
-        }
-        
-        openURL(url)
-    }
     
     private func openURL(_ url: URL) {
         UIApplication.shared.open(url)

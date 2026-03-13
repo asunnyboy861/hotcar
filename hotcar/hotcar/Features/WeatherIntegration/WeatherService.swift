@@ -8,6 +8,50 @@
 
 import Foundation
 
+// MARK: - Weather Error
+
+enum WeatherError: Error, LocalizedError {
+    case invalidURL
+    case networkError(Error)
+    case serverError(Int)
+    case decodingError(Error)
+    case locationPermissionDenied
+    case locationUnavailable
+    case noCachedData
+    
+    var errorDescription: String? {
+        switch self {
+        case .invalidURL:
+            return "Invalid weather service URL"
+        case .networkError:
+            return "Network connection failed. Please check your internet connection."
+        case .serverError(let code):
+            return "Weather service unavailable (Error \(code)). Please try again later."
+        case .decodingError:
+            return "Failed to parse weather data"
+        case .locationPermissionDenied:
+            return "Location access is required for accurate weather data"
+        case .locationUnavailable:
+            return "Unable to determine your location"
+        case .noCachedData:
+            return "No cached weather data available"
+        }
+    }
+    
+    var recoverySuggestion: String? {
+        switch self {
+        case .locationPermissionDenied:
+            return "Please enable location access in Settings > Privacy > Location Services"
+        case .networkError, .serverError:
+            return "Pull down to refresh or check your connection"
+        case .locationUnavailable:
+            return "Please check your location settings and try again"
+        default:
+            return nil
+        }
+    }
+}
+
 final class WeatherService: ObservableObject {
     
     // MARK: - Singleton
@@ -22,9 +66,21 @@ final class WeatherService: ObservableObject {
     @Published var errorMessage: String?
     @Published var lastUpdateTime: Date?
     
+    /// Current error state
+    @Published var currentError: WeatherError?
+    
+    /// Whether to show error alert (used to trigger alert)
+    @Published var showError: Bool = false
+    
+    /// Whether using cached/default fallback data
+    @Published var isUsingFallbackData: Bool = false
+    
     // MARK: - Constants
     
     private let baseURL = "https://api.open-meteo.com/v1/forecast"
+    private let weatherCacheKey = "com.hotcar.weather.cache"
+    private let weatherCacheTimestampKey = "com.hotcar.weather.cacheTimestamp"
+    private let cacheValidDuration: TimeInterval = 3600 // 1 hour
     
     // MARK: - Dependencies
     
@@ -40,6 +96,20 @@ final class WeatherService: ObservableObject {
     func fetchCurrentTemperature() async {
         isLoading = true
         errorMessage = nil
+        currentError = nil
+        isUsingFallbackData = false
+        
+        // Check location permission using LocationService
+        let authStatus = LocationService.shared.authorizationStatus
+        guard authStatus == .authorizedWhenInUse || authStatus == .authorizedAlways else {
+            if authStatus == .denied || authStatus == .restricted {
+                handleError(.locationPermissionDenied)
+            } else {
+                handleError(.locationUnavailable)
+            }
+            useCachedDataOrDefault()
+            return
+        }
         
         // Get location from LocationService
         let location = locationService.getCurrentLocation()
@@ -49,34 +119,40 @@ final class WeatherService: ObservableObject {
         let urlString = "\(baseURL)?latitude=\(location.latitude)&longitude=\(location.longitude)&current_weather=true&temperature_unit=celsius"
         
         guard let url = URL(string: urlString) else {
-            errorMessage = "Invalid URL"
-            isLoading = false
+            handleError(.invalidURL)
+            useCachedDataOrDefault()
             return
         }
         
         do {
             let (data, response) = try await URLSession.shared.data(from: url)
             
-            guard let httpResponse = response as? HTTPURLResponse,
-                  (200...299).contains(httpResponse.statusCode) else {
-                errorMessage = "Server error"
-                isLoading = false
+            guard let httpResponse = response as? HTTPURLResponse else {
+                handleError(.networkError(NSError(domain: "Invalid response", code: -1)))
+                useCachedDataOrDefault()
+                return
+            }
+            
+            guard (200...299).contains(httpResponse.statusCode) else {
+                handleError(.serverError(httpResponse.statusCode))
+                useCachedDataOrDefault()
                 return
             }
             
             let decoder = JSONDecoder()
             let weatherData = try decoder.decode(WeatherResponse.self, from: data)
             
-            await MainActor.run {
-                self.currentTemperature = weatherData.currentWeather.temperature
-                self.lastUpdateTime = Date()
-                self.isLoading = false
-            }
+            currentTemperature = weatherData.currentWeather.temperature
+            cacheTemperature(weatherData.currentWeather.temperature)
+            lastUpdateTime = Date()
+            isLoading = false
+            
+        } catch let decodingError as DecodingError {
+            handleError(.decodingError(decodingError))
+            useCachedDataOrDefault()
         } catch {
-            await MainActor.run {
-                self.errorMessage = error.localizedDescription
-                self.isLoading = false
-            }
+            handleError(.networkError(error))
+            useCachedDataOrDefault()
         }
     }
     
@@ -132,6 +208,47 @@ final class WeatherService: ObservableObject {
     /// Get temperature in specified unit
     func getTemperatureInUnit(_ celsius: Double, unit: AppSettings.TemperatureUnit) -> Double {
         return unit.convert(from: celsius)
+    }
+    
+    // MARK: - Private Methods
+    
+    private func handleError(_ error: WeatherError) {
+        currentError = error
+        showError = true
+        isLoading = false
+        print("WeatherService Error: \(error.localizedDescription)")
+    }
+    
+    private func cacheTemperature(_ temperature: Double) {
+        UserDefaults.standard.set(temperature, forKey: weatherCacheKey)
+        UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: weatherCacheTimestampKey)
+    }
+    
+    private func useCachedDataOrDefault() {
+        isUsingFallbackData = true
+        
+        // Try to use cached data
+        if let cached = UserDefaults.standard.object(forKey: weatherCacheKey) as? Double,
+           let timestamp = UserDefaults.standard.object(forKey: weatherCacheTimestampKey) as? TimeInterval {
+            let cacheDate = Date(timeIntervalSince1970: timestamp)
+            // Cache valid for 1 hour
+            if Date().timeIntervalSince(cacheDate) < cacheValidDuration {
+                currentTemperature = cached
+                return
+            }
+        }
+        
+        // Use default temperature (0°C)
+        currentTemperature = 0
+        if currentError == nil {
+            currentError = .noCachedData
+        }
+    }
+    
+    /// Clear error state (used after user manually dismisses error alert)
+    func clearError() {
+        currentError = nil
+        showError = false
     }
 }
 

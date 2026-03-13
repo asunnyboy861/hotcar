@@ -17,6 +17,13 @@ final class StatisticsViewModel: ObservableObject {
     @Published var chartData: TimeRangeData = TimeRangeData()
     @Published var selectedVehicleId: String?
     
+    // MARK: - Computed Properties
+    
+    /// Access sessions from StatisticsService
+    var sessions: [WarmUpSession] {
+        statisticsService.sessions
+    }
+    
     // MARK: - Dependencies
     
     private let statisticsService = StatisticsService.shared
