@@ -2,8 +2,9 @@
 //  VehicleCard.swift
 //  hotcar
 //
-//  HotCar UI Component - Vehicle Card
+//  HotCar UI Component - Vehicle Card (Refactored)
 //  Display vehicle information in a card format
+//  Updated with new design system
 //
 
 import SwiftUI
@@ -32,7 +33,7 @@ struct VehicleCard: View {
     
     var body: some View {
         Button(action: onTap) {
-            HStack(spacing: 16) {
+            HStack(spacing: HotCarSpacing.mediumLarge) {
                 // Vehicle Icon
                 vehicleIcon
                 
@@ -43,19 +44,20 @@ struct VehicleCard: View {
                 
                 // Chevron
                 Image(systemName: "chevron.right")
+                    .font(.system(size: 18, weight: .semibold))
                     .foregroundColor(.textMuted)
-                    .font(.hotCarCaption)
             }
-            .padding(.card)
+            .padding(HotCarSpacing.mediumLarge)
             .background(Color.backgroundCard)
-            .cornerRadius(.hotCarRadiusLg)
+            .cornerRadius(HotCarRadius.large)
             .overlay(
-                RoundedRectangle(cornerRadius: .hotCarRadiusLg)
+                RoundedRectangle(cornerRadius: HotCarRadius.large)
                     .stroke(
-                        isPrimary ? Color.hotCarSecondary.opacity(0.5) : Color.clear,
+                        isPrimary ? Color.hotCarSecondary.opacity(0.3) : Color.clear,
                         lineWidth: 2
                     )
             )
+            .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 4)
         }
         .buttonStyle(PlainButtonStyle())
     }
@@ -63,21 +65,26 @@ struct VehicleCard: View {
     // MARK: - Vehicle Icon
     
     private var vehicleIcon: some View {
-        Image(systemName: vehicle.type.icon)
-            .font(.system(size: 36))
-            .foregroundColor(.hotCarPrimary)
-            .frame(width: 60, height: 60)
-            .background(Color.backgroundSecondary)
-            .cornerRadius(.hotCarRadiusMd)
+        ZStack {
+            Circle()
+                .fill(Color.hotCarPrimary.opacity(0.15))
+                .frame(width: 56, height: 56)
+            
+            Image(systemName: vehicle.type.icon)
+                .font(.system(size: 28, weight: .semibold))
+                .foregroundColor(.hotCarPrimary)
+        }
+        .cornerRadius(HotCarRadius.medium)
     }
     
     // MARK: - Vehicle Info
     
     private var vehicleInfo: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: HotCarSpacing.small) {
             // Vehicle Name
             Text(vehicle.name)
                 .font(.hotCarHeadline)
+                .fontWeight(.semibold)
                 .foregroundColor(.textPrimary)
             
             // Vehicle Details
@@ -97,9 +104,14 @@ struct VehicleCard: View {
     }
     
     private var primaryBadge: some View {
-        Label("Primary Vehicle", systemImage: "star.fill")
-            .font(.hotCarCaption)
-            .foregroundColor(.hotCarSecondary)
+        HStack(spacing: 4) {
+            Image(systemName: "star.fill")
+                .font(.system(size: 10))
+            Text("Primary Vehicle")
+        }
+        .font(.hotCarFootnote)
+        .fontWeight(.medium)
+        .foregroundColor(.hotCarSecondary)
     }
 }
 

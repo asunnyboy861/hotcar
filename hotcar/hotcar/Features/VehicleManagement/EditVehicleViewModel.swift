@@ -70,7 +70,7 @@ final class EditVehicleViewModel: ObservableObject {
     
     // MARK: - Public Methods
     
-    func saveVehicle() {
+    func saveVehicle() async {
         let updatedVehicle = Vehicle(
             id: vehicleId,
             name: vehicleName,
@@ -85,20 +85,16 @@ final class EditVehicleViewModel: ObservableObject {
             apiToken: apiToken.isEmpty ? nil : apiToken
         )
         
-        Task {
-            await vehicleService.updateVehicle(updatedVehicle)
-            
-            if isPrimary {
-                await vehicleService.setPrimaryVehicle(updatedVehicle)
-            }
+        await vehicleService.updateVehicle(updatedVehicle)
+        
+        if isPrimary {
+            await vehicleService.setPrimaryVehicle(updatedVehicle)
         }
     }
     
-    func deleteVehicle() {
-        Task {
-            if let vehicle = await vehicleService.vehicles.first(where: { $0.id == vehicleId }) {
-                await vehicleService.deleteVehicle(vehicle)
-            }
+    func deleteVehicle() async {
+        if let vehicle = await vehicleService.vehicles.first(where: { $0.id == vehicleId }) {
+            await vehicleService.deleteVehicle(vehicle)
         }
     }
     

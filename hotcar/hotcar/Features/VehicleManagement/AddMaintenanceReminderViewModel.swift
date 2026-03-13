@@ -41,7 +41,7 @@ final class AddMaintenanceReminderViewModel: ObservableObject {
     
     // MARK: - Public Methods
     
-    func saveReminder() {
+    func saveReminder() async {
         let reminder = MaintenanceReminder(
             vehicleId: vehicleId,
             type: selectedMaintenanceType,
@@ -50,9 +50,8 @@ final class AddMaintenanceReminderViewModel: ObservableObject {
             dueDate: hasDueDate ? dueDate : nil
         )
         
-        Task {
-            await maintenanceService.addReminder(reminder)
-        }
+        await maintenanceService.addReminder(reminder)
+        NotificationCenter.default.post(name: .maintenanceReminderAdded, object: nil)
     }
     
     func setInterval(_ days: Int) {

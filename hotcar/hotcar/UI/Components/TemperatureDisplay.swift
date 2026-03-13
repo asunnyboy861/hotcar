@@ -2,8 +2,9 @@
 //  TemperatureDisplay.swift
 //  hotcar
 //
-//  HotCar UI Component - Temperature Display
+//  HotCar UI Component - Temperature Display (Refactored)
 //  Large, visible temperature display optimized for cold weather
+//  Updated with new design system and US market preferences (Fahrenheit)
 //
 
 import SwiftUI
@@ -29,7 +30,7 @@ struct TemperatureDisplay: View {
         temperature: Double,
         showUnit: Bool = true,
         size: DisplaySize = .large,
-        unit: AppSettings.TemperatureUnit = .celsius
+        unit: AppSettings.TemperatureUnit = .fahrenheit
     ) {
         self.temperature = temperature
         self.showUnit = showUnit
@@ -55,12 +56,11 @@ struct TemperatureDisplay: View {
         HStack(alignment: .firstTextBaseline, spacing: size.unitSpacing) {
             Text(String(format: "%.0f", displayTemperature))
                 .font(size.font)
-                .fontWeight(size.fontWeight)
             
             if showUnit {
-                Text(unit.symbol)
+                Text("°\(unit.symbol)")
                     .font(size.unitFont)
-                    .foregroundColor(.textMuted)
+                    .foregroundColor(.textSecondary)
             }
         }
         .foregroundColor(temperatureColor)
@@ -81,29 +81,37 @@ struct TemperatureDisplay: View {
     // MARK: - Helpers
     
     private var temperatureDescription: String {
-        switch temperature {
-        case ..<(-30):
-            return "Extreme Cold"
-        case -30..<(-20):
-            return "Very Cold"
-        case -20..<(-10):
-            return "Cold"
-        case -10..<0:
+        // Use Fahrenheit thresholds for US market
+        let fahrenheitTemp = unit == .fahrenheit ? temperature : (temperature * 9/5 + 32)
+        
+        switch fahrenheitTemp {
+        case ..<(-22):
+            return "Extreme Cold Alert"
+        case ..<(-4):
+            return "Very Cold Conditions"
+        case ..<(14):
+            return "Cold Weather"
+        case ..<(32):
             return "Below Freezing"
+        case ..<(50):
+            return "Chilly Morning"
         default:
             return "Above Freezing"
         }
     }
     
     private var temperatureColor: Color {
-        switch temperature {
-        case ..<(-30):
+        // Use Fahrenheit thresholds for US market
+        let fahrenheitTemp = unit == .fahrenheit ? temperature : (temperature * 9/5 + 32)
+        
+        switch fahrenheitTemp {
+        case ..<(-22):
             return .tempExtreme
-        case -30..<(-20):
+        case ..<(-4):
             return .tempVeryCold
-        case -20..<(-10):
+        case ..<(14):
             return .tempCold
-        case -10..<0:
+        case ..<(32):
             return .tempMild
         default:
             return .hotCarPrimary
@@ -118,20 +126,11 @@ extension TemperatureDisplay.DisplaySize {
     var font: Font {
         switch self {
         case .small:
-            return .hotCarTitle
+            return .hotCarHeadline
         case .medium:
-            return .hotCarTimer
+            return .hotCarTitle
         case .large:
             return .hotCarDisplay
-        }
-    }
-    
-    var fontWeight: Font.Weight {
-        switch self {
-        case .small:
-            return .semibold
-        case .medium, .large:
-            return .ultraLight
         }
     }
     
@@ -149,22 +148,22 @@ extension TemperatureDisplay.DisplaySize {
     var spacing: CGFloat {
         switch self {
         case .small:
-            return 4
+            return HotCarSpacing.small
         case .medium:
-            return 8
+            return HotCarSpacing.mediumSmall
         case .large:
-            return 12
+            return HotCarSpacing.medium
         }
     }
     
     var unitSpacing: CGFloat {
         switch self {
         case .small:
-            return 2
+            return HotCarSpacing.tight
         case .medium:
-            return 4
+            return HotCarSpacing.small
         case .large:
-            return 8
+            return HotCarSpacing.mediumSmall
         }
     }
 }
@@ -172,19 +171,19 @@ extension TemperatureDisplay.DisplaySize {
 // MARK: - Preview
 
 #Preview("Large") {
-    TemperatureDisplay(temperature: -25, showUnit: true, size: .large)
+    TemperatureDisplay(temperature: 9, showUnit: true, size: .large, unit: .fahrenheit)
         .padding()
         .background(Color.backgroundPrimary)
 }
 
 #Preview("Medium") {
-    TemperatureDisplay(temperature: -15, showUnit: true, size: .medium)
+    TemperatureDisplay(temperature: 14, showUnit: true, size: .medium, unit: .fahrenheit)
         .padding()
         .background(Color.backgroundPrimary)
 }
 
 #Preview("Small") {
-    TemperatureDisplay(temperature: -5, showUnit: true, size: .small)
+    TemperatureDisplay(temperature: 32, showUnit: true, size: .small, unit: .fahrenheit)
         .padding()
         .background(Color.backgroundPrimary)
 }

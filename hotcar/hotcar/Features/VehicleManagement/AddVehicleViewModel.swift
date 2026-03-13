@@ -48,7 +48,7 @@ final class AddVehicleViewModel: ObservableObject {
     
     // MARK: - Public Methods
     
-    func saveVehicle() {
+    func saveVehicle() async {
         let newVehicle = Vehicle(
             name: vehicleName,
             year: selectedYear,
@@ -62,13 +62,10 @@ final class AddVehicleViewModel: ObservableObject {
             apiToken: apiToken.isEmpty ? nil : apiToken
         )
         
-        Task {
-            await vehicleService.addVehicle(newVehicle)
-            
-            // If this is the first vehicle, make it primary
-            if await vehicleService.getPrimaryVehicle() == nil {
-                await vehicleService.setPrimaryVehicle(newVehicle)
-            }
+        await vehicleService.addVehicle(newVehicle)
+        
+        if await vehicleService.getPrimaryVehicle() == nil {
+            await vehicleService.setPrimaryVehicle(newVehicle)
         }
     }
 }

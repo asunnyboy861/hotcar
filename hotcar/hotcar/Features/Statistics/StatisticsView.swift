@@ -15,17 +15,21 @@ struct StatisticsView: View {
     
     @StateObject private var viewModel = StatisticsViewModel()
     @State private var selectedPeriod: TimeRange = .weekly
+    @State private var selectedChartType: WarmUpTrendChart.ChartType = .duration
     
     // MARK: - Body
     
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(spacing: 20) {
+                VStack(spacing: HotCarSpacing.large) {
                     // Overview Cards
                     overviewSection
                     
-                    // Chart
+                    // Trend Chart
+                    trendChartSection
+                    
+                    // Activity Chart
                     chartSection
                     
                     // Breakdown
@@ -34,18 +38,18 @@ struct StatisticsView: View {
                     // Insights
                     insightsSection
                 }
-                .padding(.horizontal, .hotCarSpacingLg)
-                .padding(.vertical, .hotCarSpacingMd)
+                .padding(.horizontal, HotCarLayout.screenMargin)
+                .padding(.vertical, HotCarSpacing.medium)
             }
             .background(Color.backgroundPrimary)
-            .navigationTitle("Statistics")
+            .navigationTitle(NSLocalizedString("statistics_title", tableName: "Localizable", comment: "Statistics page title"))
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Picker("Period", selection: $selectedPeriod) {
-                        Text("Daily").tag(TimeRange.daily)
-                        Text("Weekly").tag(TimeRange.weekly)
-                        Text("Monthly").tag(TimeRange.monthly)
+                        Text(NSLocalizedString("time_daily", tableName: "Localizable", comment: "Daily time range")).tag(TimeRange.daily)
+                        Text(NSLocalizedString("time_weekly", tableName: "Localizable", comment: "Weekly time range")).tag(TimeRange.weekly)
+                        Text(NSLocalizedString("time_monthly", tableName: "Localizable", comment: "Monthly time range")).tag(TimeRange.monthly)
                     }
                     .pickerStyle(.segmented)
                     .frame(width: 200)
@@ -63,8 +67,8 @@ struct StatisticsView: View {
     // MARK: - Overview Section
     
     private var overviewSection: some View {
-        VStack(spacing: 12) {
-            Text("Overview")
+        VStack(spacing: HotCarSpacing.medium) {
+            Text(NSLocalizedString("stats_overview", tableName: "Localizable", comment: "Statistics overview section title"))
                 .font(.hotCarHeadline)
                 .foregroundColor(.textPrimary)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -72,47 +76,124 @@ struct StatisticsView: View {
             LazyVGrid(columns: [
                 GridItem(.flexible()),
                 GridItem(.flexible())
-            ], spacing: 12) {
+            ], spacing: HotCarSpacing.medium) {
                 StatCard(
                     icon: "list.bullet.rectangle",
-                    title: "Total Sessions",
+                    title: NSLocalizedString("stat_total_sessions", tableName: "Localizable", comment: "Total sessions stat"),
                     value: "\(viewModel.statistics.totalSessions)",
-                    subtitle: "All Time",
+                    subtitle: NSLocalizedString("stat_all_time", tableName: "Localizable", comment: "All time subtitle"),
                     color: .hotCarPrimary
                 )
                 
                 StatCard(
                     icon: "clock",
-                    title: "Total Time",
+                    title: NSLocalizedString("stat_total_time", tableName: "Localizable", comment: "Total time stat"),
                     value: viewModel.getFormattedTotalTime(),
-                    subtitle: "All Time",
+                    subtitle: NSLocalizedString("stat_all_time", tableName: "Localizable", comment: "All time subtitle"),
                     color: .hotCarSecondary
                 )
                 
                 StatCard(
                     icon: "drop.fill",
-                    title: "Fuel Used",
+                    title: NSLocalizedString("stat_fuel_used", tableName: "Localizable", comment: "Fuel used stat"),
                     value: viewModel.getFormattedFuelUsed(),
-                    subtitle: "All Time",
+                    subtitle: NSLocalizedString("stat_all_time", tableName: "Localizable", comment: "All time subtitle"),
                     color: .warmUpActive
                 )
                 
                 StatCard(
                     icon: "dollarsign.circle.fill",
-                    title: "Total Cost",
+                    title: NSLocalizedString("stat_total_cost", tableName: "Localizable", comment: "Total cost stat"),
                     value: viewModel.getFormattedTotalCost(),
-                    subtitle: "All Time",
+                    subtitle: NSLocalizedString("stat_all_time", tableName: "Localizable", comment: "All time subtitle"),
                     color: .tempCold
                 )
             }
         }
     }
     
+    // MARK: - Trend Chart Section
+    
+    private var trendChartSection: some View {
+        VStack(spacing: HotCarSpacing.medium) {
+            // Chart Type Selector
+            chartTypeSelector
+            
+            // Chart
+            if #available(iOS 16.0, *) {
+                WarmUpTrendChart(
+                    dataPoints: currentChartData,
+                    chartType: selectedChartType,
+                    unit: chartUnit
+                )
+            } else {
+                // Fallback for iOS 15
+                WarmUpTrendChartFallback(
+                    dataPoints: currentChartData,
+                    chartType: selectedChartType,
+                    unit: chartUnit
+                )
+            }
+        }
+    }
+    
+    private var chartTypeSelector: some View {
+        HStack(spacing: HotCarSpacing.small) {
+            chartTypeButton(for: .duration)
+            chartTypeButton(for: .frequency)
+            chartTypeButton(for: .temperature)
+            
+            Spacer()
+        }
+    }
+    
+    private func chartTypeButton(for type: WarmUpTrendChart.ChartType) -> some View {
+        let isSelected = selectedChartType == type
+        let backgroundColor = isSelected ? Color.hotCarPrimary : Color.backgroundSecondary.opacity(0.5)
+        let textColor = isSelected ? Color.white : Color.textSecondary
+        let fontWeight: Font.Weight = isSelected ? .semibold : .regular
+
+        return Button(action: { selectedChartType = type }) {
+            Text(type.title)
+                .font(.hotCarCaption)
+                .fontWeight(fontWeight)
+                .foregroundColor(textColor)
+                .padding(.horizontal, HotCarSpacing.medium)
+                .padding(.vertical, HotCarSpacing.small)
+                .background(
+                    RoundedRectangle(cornerRadius: HotCarRadius.small)
+                        .fill(backgroundColor)
+                )
+        }
+    }
+    
+    private var currentChartData: [ChartDataPoint] {
+        switch selectedPeriod {
+        case .daily:
+            return viewModel.chartData.daily
+        case .weekly:
+            return viewModel.chartData.weekly
+        case .monthly:
+            return viewModel.chartData.monthly
+        }
+    }
+    
+    private var chartUnit: String {
+        switch selectedChartType {
+        case .duration:
+            return NSLocalizedString("unit_min", tableName: "Localizable", comment: "Minutes unit")
+        case .frequency:
+            return NSLocalizedString("unit_sessions", tableName: "Localizable", comment: "Sessions unit")
+        case .temperature:
+            return "°C"
+        }
+    }
+    
     // MARK: - Chart Section
     
     private var chartSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Activity")
+        VStack(alignment: .leading, spacing: HotCarSpacing.medium) {
+            Text(NSLocalizedString("stats_activity", tableName: "Localizable", comment: "Activity section title"))
                 .font(.hotCarHeadline)
                 .foregroundColor(.textPrimary)
             
@@ -129,7 +210,7 @@ struct StatisticsView: View {
                             endPoint: .bottom
                         )
                     )
-                    .cornerRadius(.hotCarRadiusSm)
+                    .cornerRadius(HotCarRadius.small)
                 }
                 .frame(height: 200)
                 .chartXAxis {
@@ -155,24 +236,26 @@ struct StatisticsView: View {
                 emptyChart
             }
         }
-        .padding(.card)
-        .background(Color.backgroundCard)
-        .cornerRadius(.hotCarRadiusLg)
+        .padding(HotCarSpacing.medium)
+        .background(
+            RoundedRectangle(cornerRadius: HotCarRadius.medium)
+                .fill(Color.backgroundSecondary)
+        )
     }
     
     // MARK: - Breakdown Section
     
     private var breakdownSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Breakdown")
+        VStack(alignment: .leading, spacing: HotCarSpacing.medium) {
+            Text(NSLocalizedString("stats_breakdown", tableName: "Localizable", comment: "Breakdown section title"))
                 .font(.hotCarHeadline)
                 .foregroundColor(.textPrimary)
             
-            VStack(spacing: 16) {
+            VStack(spacing: HotCarSpacing.medium) {
                 // By Vehicle
                 if !viewModel.statistics.sessionsByVehicle.isEmpty {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("By Vehicle")
+                    VStack(alignment: .leading, spacing: HotCarSpacing.small) {
+                        Text(NSLocalizedString("stats_by_vehicle", tableName: "Localizable", comment: "By vehicle label"))
                             .font(.hotCarCaption)
                             .foregroundColor(.textSecondary)
                         
@@ -191,8 +274,8 @@ struct StatisticsView: View {
                 
                 // By Type
                 if !viewModel.statistics.sessionsByType.isEmpty {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("By Vehicle Type")
+                    VStack(alignment: .leading, spacing: HotCarSpacing.small) {
+                        Text(NSLocalizedString("stats_by_type", tableName: "Localizable", comment: "By vehicle type label"))
                             .font(.hotCarCaption)
                             .foregroundColor(.textSecondary)
                         
@@ -208,60 +291,64 @@ struct StatisticsView: View {
                 }
             }
         }
-        .padding(.card)
-        .background(Color.backgroundCard)
-        .cornerRadius(.hotCarRadiusLg)
+        .padding(HotCarSpacing.medium)
+        .background(
+            RoundedRectangle(cornerRadius: HotCarRadius.medium)
+                .fill(Color.backgroundSecondary)
+        )
     }
     
     // MARK: - Insights Section
     
     private var insightsSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Insights")
+        VStack(alignment: .leading, spacing: HotCarSpacing.medium) {
+            Text(NSLocalizedString("stats_insights", tableName: "Localizable", comment: "Insights section title"))
                 .font(.hotCarHeadline)
                 .foregroundColor(.textPrimary)
             
-            VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: HotCarSpacing.medium) {
                 InsightRow(
                     icon: "leaf.fill",
-                    title: "Average Duration",
+                    title: NSLocalizedString("stats_avg_duration", tableName: "Localizable", comment: "Average duration label"),
                     value: viewModel.getFormattedAverageDuration(),
                     color: .warmUpReady
                 )
                 
                 InsightRow(
                     icon: "thermometer.medium",
-                    title: "Average Temperature",
+                    title: NSLocalizedString("stats_avg_temp", tableName: "Localizable", comment: "Average temperature label"),
                     value: String(format: "%.1f°C", viewModel.statistics.averageTemperature),
                     color: .tempCold
                 )
                 
                 InsightRow(
                     icon: "wallet.pass.fill",
-                    title: "Est. Monthly Savings",
+                    title: NSLocalizedString("stats_monthly_savings", tableName: "Localizable", comment: "Monthly savings label"),
                     value: String(format: "$%.2f", viewModel.statistics.estimatedMonthlySavings),
                     color: .hotCarPrimary
                 )
             }
         }
-        .padding(.card)
-        .background(Color.backgroundCard)
-        .cornerRadius(.hotCarRadiusLg)
+        .padding(HotCarSpacing.medium)
+        .background(
+            RoundedRectangle(cornerRadius: HotCarRadius.medium)
+                .fill(Color.backgroundSecondary)
+        )
     }
     
     // MARK: - Empty Chart
     
     private var emptyChart: some View {
-        VStack(spacing: 12) {
+        VStack(spacing: HotCarSpacing.medium) {
             Image(systemName: "chart.bar")
                 .font(.system(size: 48))
                 .foregroundColor(.textMuted)
             
-            Text("No data yet")
+            Text(NSLocalizedString("chart_no_data_title", tableName: "Localizable", comment: "No data title"))
                 .font(.hotCarHeadline)
                 .foregroundColor(.textSecondary)
             
-            Text("Start using the warm-up timer to see statistics")
+            Text(NSLocalizedString("chart_no_data_desc", tableName: "Localizable", comment: "No data description"))
                 .font(.hotCarCaption)
                 .foregroundColor(.textMuted)
                 .multilineTextAlignment(.center)

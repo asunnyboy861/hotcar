@@ -123,8 +123,10 @@ struct EditVehicleView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") {
-                        viewModel.saveVehicle()
-                        dismiss()
+                        Task {
+                            await viewModel.saveVehicle()
+                            dismiss()
+                        }
                     }
                     .disabled(!viewModel.isValid)
                 }
@@ -132,8 +134,10 @@ struct EditVehicleView: View {
             .alert("Delete Vehicle?", isPresented: $showingDeleteAlert) {
                 Button("Cancel", role: .cancel) {}
                 Button("Delete", role: .destructive) {
-                    viewModel.deleteVehicle()
-                    dismiss()
+                    Task {
+                        await viewModel.deleteVehicle()
+                        dismiss()
+                    }
                 }
             } message: {
                 Text("Are you sure you want to delete \"\(viewModel.vehicleName)\"? This action cannot be undone.")

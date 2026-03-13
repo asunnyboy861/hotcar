@@ -2,8 +2,9 @@
 //  TimerButton.swift
 //  hotcar
 //
-//  HotCar UI Component - Timer Button
+//  HotCar UI Component - Timer Button (Refactored)
 //  Large, glove-friendly button for cold weather use
+//  Updated with new design system and improved visual hierarchy
 //
 
 import SwiftUI
@@ -39,7 +40,7 @@ struct TimerButton: View {
     
     var body: some View {
         Button(action: action) {
-            VStack(spacing: 16) {
+            VStack(spacing: HotCarSpacing.mediumLarge) {
                 progressRingOverlay
                 
                 timeText
@@ -47,11 +48,18 @@ struct TimerButton: View {
                 statusText
             }
             .frame(maxWidth: .infinity)
-            .frame(height: 180)
+            .frame(height: HotCarLayout.buttonHeight * 3.2)
             .background(buttonBackground)
-            .foregroundColor(.white)
-            .cornerRadius(.hotCarRadiusXl)
-            .shadow(color: shadowColor, radius: 12, x: 0, y: 6)
+            .foregroundColor(.textPrimary)
+            .cornerRadius(HotCarRadius.maximum)
+            .shadow(color: shadowColor, radius: 16, x: 0, y: 8)
+            .overlay(
+                RoundedRectangle(cornerRadius: HotCarRadius.maximum)
+                    .stroke(
+                        Color.white.opacity(isActive ? 0.2 : 0.1),
+                        lineWidth: 1
+                    )
+            )
             .scaleEffect(isActive ? 1.02 : 1.0)
             .animation(.easeInOut(duration: 0.2), value: isActive)
         }
@@ -63,7 +71,7 @@ struct TimerButton: View {
     private var timeText: some View {
         Text(displayTime)
             .font(.hotCarTimer)
-            .fontWeight(.medium)
+            .fontWeight(.semibold)
     }
     
     private var displayTime: String {
@@ -81,12 +89,13 @@ struct TimerButton: View {
     private var statusText: some View {
         Text(statusLabel)
             .font(.hotCarHeadline)
-            .fontWeight(.medium)
+            .fontWeight(.semibold)
+            .foregroundColor(.textSecondary)
     }
     
     private var statusLabel: String {
         if isActive {
-            return isPaused ? "Paused" : "Running..."
+            return isPaused ? "Paused" : "Warming Up..."
         } else {
             return "Start Engine"
         }
@@ -96,29 +105,36 @@ struct TimerButton: View {
     
     private var progressRingOverlay: some View {
         ZStack {
+            // Background ring
             Circle()
-                .stroke(Color.white.opacity(0.2), lineWidth: 8)
-                .frame(width: 140, height: 140)
+                .stroke(Color.textSecondary.opacity(0.15), lineWidth: 6)
+                .frame(width: 120, height: 120)
             
+            // Progress ring
             Circle()
                 .trim(from: 0, to: isActive ? progress : 0)
                 .stroke(
                     Color.white,
-                    style: StrokeStyle(lineWidth: 8, lineCap: .round)
+                    style: StrokeStyle(lineWidth: 6, lineCap: .round)
                 )
-                .frame(width: 140, height: 140)
+                .frame(width: 120, height: 120)
                 .rotationEffect(.degrees(-90))
-                .animation(.linear(duration: 0.5), value: progress)
+                .animation(.linear(duration: 0.3), value: progress)
             
+            // Center icon
             if isActive {
-                VStack(spacing: 4) {
+                VStack(spacing: 6) {
                     Image(systemName: isPaused ? "pause.fill" : "flame.fill")
-                        .font(.system(size: 24))
+                        .font(.system(size: 28, weight: .semibold))
                     
                     Text("\(Int(progress * 100))%")
-                        .font(.system(size: 14, weight: .medium))
+                        .font(.system(size: 16, weight: .semibold, design: .rounded))
                 }
                 .foregroundColor(.white)
+            } else {
+                Image(systemName: "power")
+                    .font(.system(size: 32, weight: .semibold))
+                    .foregroundColor(.white.opacity(0.9))
             }
         }
         .frame(height: 80)
@@ -147,7 +163,9 @@ struct TimerButton: View {
     // MARK: - Shadow Color
     
     private var shadowColor: Color {
-        isActive ? Color.warmUpActive.opacity(0.5) : Color.hotCarPrimary.opacity(0.4)
+        isActive ? 
+            Color.warmUpActive.opacity(0.4) : 
+            Color.hotCarPrimary.opacity(0.35)
     }
 }
 

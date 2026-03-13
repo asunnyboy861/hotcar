@@ -13,6 +13,7 @@ struct SettingsView: View {
     
     @StateObject private var viewModel = SettingsViewModel()
     @Environment(\.dismiss) private var dismiss
+    @State private var showingContactSupport = false
     
     // MARK: - Body
     
@@ -34,14 +35,17 @@ struct SettingsView: View {
                 // About
                 aboutSection
             }
-            .navigationTitle("Settings")
+            .navigationTitle(NSLocalizedString("settings_title", tableName: "Localizable", comment: "Settings page title"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Done") {
+                    Button(NSLocalizedString("button_done", tableName: "Localizable", comment: "Done button")) {
                         dismiss()
                     }
                 }
+            }
+            .sheet(isPresented: $showingContactSupport) {
+                ContactSupportView()
             }
         }
     }
@@ -180,12 +184,15 @@ struct SettingsView: View {
                 }
                 
                 Button(action: {
-                    viewModel.contactSupport()
+                    showingContactSupport = true
                 }) {
                     HStack {
-                        Text("Contact Support")
+                        Text(NSLocalizedString("contact_support_button", tableName: "Localizable", comment: "Contact support button"))
                             .foregroundColor(.hotCarPrimary)
                         Spacer()
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 14))
+                            .foregroundColor(.textMuted)
                     }
                 }
             }

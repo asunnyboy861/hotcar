@@ -203,21 +203,24 @@ extension Notification.Name {
 
 extension NotificationService: UNUserNotificationCenterDelegate {
     
-    func userNotificationCenter(
+    nonisolated func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         willPresent notification: UNNotification,
         withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
     ) {
-        // Show notification even when app is in foreground
-        completionHandler([.banner, .sound, .badge])
+        Task { @MainActor in
+            completionHandler([.banner, .sound, .badge])
+        }
     }
     
-    func userNotificationCenter(
+    nonisolated func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         didReceive response: UNNotificationResponse,
         withCompletionHandler completionHandler: @escaping () -> Void
     ) {
-        handleNotificationResponse(response)
-        completionHandler()
+        Task { @MainActor in
+            handleNotificationResponse(response)
+            completionHandler()
+        }
     }
 }

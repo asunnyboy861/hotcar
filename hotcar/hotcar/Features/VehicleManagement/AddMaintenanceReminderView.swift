@@ -27,7 +27,7 @@ struct AddMaintenanceReminderView: View {
         NavigationView {
             Form {
                 // Type Selection
-                Section(header: Text("Maintenance Type")) {
+                Section(header: Text(NSLocalizedString("add_reminder_type_section", tableName: "Localizable", comment: "Maintenance type section title"))) {
                     Picker("Type", selection: $viewModel.selectedType) {
                         ForEach(MaintenanceType.allCases, id: \.self) { type in
                             Label(type.displayName, systemImage: type.icon)
@@ -38,14 +38,14 @@ struct AddMaintenanceReminderView: View {
                 }
                 
                 // Details
-                Section(header: Text("Details")) {
+                Section(header: Text(NSLocalizedString("add_reminder_details_section", tableName: "Localizable", comment: "Details section title"))) {
                     TextField("Title", text: $viewModel.title)
                     
                     TextField("Description (optional)", text: $viewModel.description)
                 }
                 
                 // Due Date
-                Section(header: Text("Due Date")) {
+                Section(header: Text(NSLocalizedString("add_reminder_due_date_section", tableName: "Localizable", comment: "Due date section title"))) {
                     Toggle("Set Due Date", isOn: $viewModel.hasDueDate)
                     
                     if viewModel.hasDueDate {
@@ -59,7 +59,7 @@ struct AddMaintenanceReminderView: View {
                 }
                 
                 // Quick Intervals
-                Section(header: Text("Quick Intervals")) {
+                Section(header: Text(NSLocalizedString("add_reminder_quick_intervals", tableName: "Localizable", comment: "Quick intervals section title"))) {
                     ForEach(quickIntervals, id: \.label) { interval in
                         Button(action: {
                             viewModel.setInterval(interval.days)
@@ -74,7 +74,7 @@ struct AddMaintenanceReminderView: View {
                     }
                 }
             }
-            .navigationTitle("Add Reminder")
+            .navigationTitle(NSLocalizedString("add_reminder_title", tableName: "Localizable", comment: "Add reminder page title"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -85,8 +85,10 @@ struct AddMaintenanceReminderView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") {
-                        viewModel.saveReminder()
-                        dismiss()
+                        Task {
+                            await viewModel.saveReminder()
+                            dismiss()
+                        }
                     }
                     .disabled(!viewModel.isValid)
                 }

@@ -1,0 +1,185 @@
+/*
+  Localizable.strings
+  hotcar
+
+  English (US/Canada) localization
+  Optimized for North American and Nordic markets
+*/
+
+// MARK: - Temperature Status
+"temp_status_extreme" = "Extreme Cold Alert";
+"temp_status_very_cold" = "Very Cold";
+"temp_status_cold" = "Cold";
+"temp_status_mild" = "Chilly";
+"temp_status_above_freezing" = "Above Freezing";
+
+// MARK: - Warm-up Advice
+"advice_extreme_cold" = "Use block heater and extend warm-up time";
+"advice_very_cold" = "Full warm-up recommended for engine protection";
+"advice_cold" = "Warm-up advised for optimal performance";
+"advice_mild" = "Short warm-up recommended";
+"advice_above_freezing" = "Warm-up optional";
+
+// MARK: - Time Units
+"time_unit_min" = "min";
+"time_unit_min_short" = "min";
+"time_unit_hour" = "hr";
+
+// MARK: - Timer
+"recommended_warmup" = "Recommended Warm-up Time";
+"button_start_warmup" = "Start Warm-up";
+"button_stop" = "Stop";
+"timer_warming_up" = "Warming up...";
+"timer_complete" = "Warm-up Complete";
+
+// MARK: - Statistics
+"stats_this_month" = "This Month";
+"button_details" = "Details";
+"stat_cost" = "Fuel Cost";
+"stat_fuel_used" = "Fuel Used";
+"stat_co2_saved" = "CO₂ Saved";
+"stat_sessions" = "Sessions";
+
+// MARK: - Units
+"unit_liter" = "L";
+"unit_kg" = "kg";
+"unit_mile" = "mi";
+"unit_km" = "km";
+
+// MARK: - New User
+"new_user_track_savings" = "Start tracking your fuel usage";
+"new_user_use_timer" = "Use the timer to optimize your warm-up";
+
+// MARK: - Vehicle
+"select_vehicle" = "Select Vehicle";
+"menu_manage_vehicles" = "Manage Vehicles";
+"default_vehicle" = "My Vehicle";
+
+// MARK: - Forecast
+"forecast_tomorrow_morning" = "Tomorrow Morning";
+"forecast_warmup" = "Warm-up";
+"forecast_plan_ahead" = "Plan ahead";
+
+// MARK: - General
+"loading" = "Loading...";
+"cancel" = "Cancel";
+"save" = "Save";
+"done" = "Done";
+"error" = "Error";
+"retry" = "Retry";
+
+// MARK: - Environmental Impact
+"impact_trees_equivalent" = "Equivalent to %.1f trees planted";
+"impact_positive" = "Positive environmental impact";
+"impact_start_tracking" = "Start tracking to see your impact";
+"cost_saved_amount" = "$%@ saved this month";
+"cost_no_data" = "No data yet";
+
+// MARK: - Time Range
+"time_range_day" = "Today";
+"time_range_week" = "This Week";
+"time_range_month" = "This Month";
+
+// MARK: - Vehicle Setup Guide
+"guide_add_vehicle_title" = "Add Your Vehicle";
+"guide_add_vehicle_desc" = "Add your vehicle to get personalized warm-up recommendations based on your engine type and local weather conditions.";
+"button_add_vehicle" = "Add Vehicle";
+"button_later" = "Later";
+
+// MARK: - Statistics Page
+"statistics_title" = "Statistics";
+"stats_overview" = "Overview";
+"stats_activity" = "Activity";
+"stats_breakdown" = "Breakdown";
+"stats_insights" = "Insights";
+"stats_by_vehicle" = "By Vehicle";
+"stats_by_type" = "By Vehicle Type";
+"stats_avg_duration" = "Average Duration";
+"stats_avg_temp" = "Average Temperature";
+"stats_monthly_savings" = "Est. Monthly Savings";
+"stat_total_sessions" = "Total Sessions";
+"stat_total_time" = "Total Time";
+"stat_all_time" = "All Time";
+
+// MARK: - Chart
+"chart_duration_title" = "Warm-up Duration";
+"chart_frequency_title" = "Session Frequency";
+"chart_temperature_title" = "Temperature Trend";
+"chart_minutes" = "Minutes";
+"chart_sessions" = "Sessions";
+"chart_celsius" = "°C";
+"chart_average_format" = "Avg: %.1f %@";
+"chart_no_data" = "No data available yet";
+"chart_no_data_title" = "No data yet";
+"chart_no_data_desc" = "Start using the warm-up timer to see your statistics";
+
+// MARK: - Time Periods
+"time_daily" = "Daily";
+"time_weekly" = "Weekly";
+"time_monthly" = "Monthly";
+
+// MARK: - Units
+"unit_min" = "min";
+"unit_sessions" = "sessions";
+
+// MARK: - Share
+"share_title" = "Share Your Progress";
+"share_select_period" = "Select Time Period";
+"share_preview" = "Preview";
+"share_options" = "Share Options";
+"share_text_preview" = "Share Text";
+"share_system" = "Share...";
+"share_copy_text" = "Copy Text";
+"share_save_image" = "Save Image";
+"share_savings_title" = "Money Saved";
+"share_fuel_saved" = "Fuel Saved";
+"share_co2_reduced" = "CO₂ Reduced";
+"share_sessions" = "Sessions";
+"share_tagline" = "Optimize your winter warm-ups with HotCar";
+"share_period_weekly" = "This Week";
+"share_period_monthly" = "This Month";
+"share_period_alltime" = "All Time";
+
+// MARK: - Contact Support / Feedback
+"contact_support_title" = "Contact Support";
+"contact_support_button" = "Contact Support";
+"settings_title" = "Settings";
+"button_done" = "Done";
+"button_ok" = "OK";
+
+// Feedback Topics
+"feedback_topic_label" = "What can we help you with?";
+"topic_bug_report" = "Bug Report";
+"topic_feature_request" = "Feature Request";
+"topic_general" = "General Feedback";
+"topic_support" = "Help & Support";
+
+// Contact Info
+"feedback_contact_label" = "Your Contact Information";
+"feedback_name_placeholder" = "Your Name";
+"feedback_email_placeholder" = "Email Address";
+
+// Message
+"feedback_message_label" = "Tell us more";
+"feedback_message_placeholder" = "Please describe your issue or suggestion in detail...";
+
+// Submit
+"feedback_submit_button" = "Send Feedback";
+"feedback_alert_title" = "Feedback";
+"feedback_success_message" = "Thank you! Your feedback has been submitted successfully. We'll get back to you soon.";
+"feedback_error_message" = "Sorry, we couldn't submit your feedback. Please check your internet connection and try again.";
+
+// MARK: - Maintenance Reminders
+"maintenance_title" = "Maintenance";
+"maintenance_no_reminders" = "No Maintenance Reminders";
+"maintenance_use_standard" = "Use Standard Schedule";
+"maintenance_overdue" = "Overdue";
+"maintenance_upcoming" = "Upcoming";
+"maintenance_completed" = "Completed";
+
+// MARK: - Add Maintenance Reminder
+"add_reminder_title" = "Add Reminder";
+"add_reminder_type_section" = "Maintenance Type";
+"add_reminder_details_section" = "Details";
+"add_reminder_due_date_section" = "Due Date";
+"add_reminder_quick_intervals" = "Quick Intervals";

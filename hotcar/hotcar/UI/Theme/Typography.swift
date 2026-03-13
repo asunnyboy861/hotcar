@@ -2,8 +2,9 @@
 //  Typography.swift
 //  hotcar
 //
-//  HotCar Theme - Typography System
+//  HotCar Theme - Typography System (Refactored)
 //  Optimized for cold weather visibility and accessibility
+//  Improved font weights for better readability in dark mode
 //
 
 import SwiftUI
@@ -12,19 +13,29 @@ import SwiftUI
 
 extension Font {
     
-    // MARK: - Display Fonts (Large, Visible in Cold Weather)
+    // MARK: - Display Fonts (Large Numbers - Increased Weight)
     
     /// Extra large temperature display (64pt)
-    /// Use for: Main temperature, countdown timer
-    static let hotCarDisplay = Font.system(size: 64, weight: .ultraLight, design: .rounded)
+    /// Rationale: Changed from .ultraLight to .light for better readability
+    /// Use for: Main temperature display
+    static let hotCarDisplay = Font.system(size: 64, weight: .light, design: .rounded)
     
     /// Large timer display (48pt)
     /// Use for: Timer countdown, warm-up time
-    static let hotCarTimer = Font.system(size: 48, weight: .medium, design: .rounded)
+    static let hotCarTimer = Font.system(size: 48, weight: .semibold, design: .rounded)
+    
+    /// Monospaced display for numbers
+    /// Use for: Temperature with precise alignment
+    static let hotCarDisplayMono = Font.system(
+        size: 64,
+        weight: .light,
+        design: .monospaced
+    )
     
     // MARK: - Heading Fonts
     
     /// Large title (34pt)
+    /// Rationale: Increased weight to .bold for better visual hierarchy
     /// Use for: Screen titles, main headers
     static let hotCarLargeTitle = Font.system(size: 34, weight: .bold, design: .rounded)
     
@@ -33,8 +44,9 @@ extension Font {
     static let hotCarTitle = Font.system(size: 24, weight: .semibold, design: .rounded)
     
     /// Headline (18pt)
+    /// Rationale: Increased weight to .semibold for better visibility
     /// Use for: Subheaders, important labels
-    static let hotCarHeadline = Font.system(size: 18, weight: .medium, design: .rounded)
+    static let hotCarHeadline = Font.system(size: 18, weight: .semibold, design: .rounded)
     
     // MARK: - Body Fonts
     
@@ -49,8 +61,9 @@ extension Font {
     // MARK: - Caption Fonts
     
     /// Caption (14pt)
-    /// Use for: Labels, hints, metadata
-    static let hotCarCaption = Font.system(size: 14, weight: .regular, design: .default)
+    /// Rationale: Increased weight to .medium for better readability
+    /// Use for: Labels, hints, metadata, status text
+    static let hotCarCaption = Font.system(size: 14, weight: .medium, design: .default)
     
     /// Footnote (13pt)
     /// Use for: Fine print, disclaimers
@@ -65,8 +78,17 @@ extension Font {
     // MARK: - Number Fonts (Monospaced for Timers)
     
     /// Monospaced digits for timers and counts
+    /// Use for: Countdown timer display
     static let hotCarMonospaced = Font.system(
         size: 48,
+        weight: .semibold,
+        design: .monospaced
+    )
+    
+    /// Small monospaced digits
+    /// Use for: Secondary time displays
+    static let hotCarMonospacedSmall = Font.system(
+        size: 24,
         weight: .medium,
         design: .monospaced
     )
@@ -84,6 +106,11 @@ extension View {
     /// Standard line height for body text (1.2x)
     func hotCarBodyLineHeight() -> some View {
         self.lineSpacing(4)
+    }
+    
+    /// Relaxed line height for caption text (1.4x)
+    func hotCarCaptionLineHeight() -> some View {
+        self.lineSpacing(6)
     }
 }
 

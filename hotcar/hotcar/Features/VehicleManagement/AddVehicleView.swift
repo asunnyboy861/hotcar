@@ -76,8 +76,10 @@ struct AddVehicleView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") {
-                        viewModel.saveVehicle()
-                        dismiss()
+                        Task {
+                            await viewModel.saveVehicle()
+                            dismiss()
+                        }
                     }
                     .disabled(!viewModel.isValid)
                 }

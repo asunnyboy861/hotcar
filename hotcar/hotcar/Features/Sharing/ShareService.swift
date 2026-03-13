@@ -48,7 +48,31 @@ final class ShareService {
     }
     
     func generateShareImage(from data: ShareData) -> UIImage? {
-        return nil
+        let generator = ShareImageGenerator(data: data)
+        return generator.generateImage()
+    }
+    
+    /// Share data using system share sheet
+    func share(data: ShareData, from viewController: UIViewController) {
+        let items: [Any] = [
+            data.shareText,
+            generateShareImage(from: data) as Any
+        ].compactMap { $0 }
+        
+        let activityVC = UIActivityViewController(
+            activityItems: items,
+            applicationActivities: nil
+        )
+        
+        // Exclude some activities
+        activityVC.excludedActivityTypes = [
+            .assignToContact,
+            .addToReadingList,
+            .postToFlickr,
+            .postToVimeo
+        ]
+        
+        viewController.present(activityVC, animated: true)
     }
     
     // MARK: - Private Methods

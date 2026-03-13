@@ -12,9 +12,16 @@ struct MaintenanceRemindersView: View {
     
     // MARK: - Properties
     
-    @StateObject private var viewModel = MaintenanceRemindersViewModel()
+    @StateObject private var viewModel: MaintenanceRemindersViewModel
     @State private var showingAddReminder = false
     let vehicleId: String
+    
+    // MARK: - Initialization
+    
+    init(vehicleId: String) {
+        self.vehicleId = vehicleId
+        _viewModel = StateObject(wrappedValue: MaintenanceRemindersViewModel(vehicleId: vehicleId))
+    }
     
     // MARK: - Body
     
@@ -27,7 +34,7 @@ struct MaintenanceRemindersView: View {
                     reminderList
                 }
             }
-            .navigationTitle("Maintenance")
+            .navigationTitle(NSLocalizedString("maintenance_title", tableName: "Localizable", comment: "Maintenance page title"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -40,9 +47,6 @@ struct MaintenanceRemindersView: View {
                 AddMaintenanceReminderView(vehicleId: vehicleId)
             }
         }
-        .onAppear {
-            viewModel.loadReminders(for: vehicleId)
-        }
     }
     
     // MARK: - Reminder List
@@ -51,7 +55,7 @@ struct MaintenanceRemindersView: View {
         List {
             // Overdue Section
             if !viewModel.overdueReminders.isEmpty {
-                Section(header: labelSection("Overdue", color: .warmUpActive)) {
+                Section(header: labelSection(NSLocalizedString("maintenance_overdue", tableName: "Localizable", comment: "Overdue section title"), color: .warmUpActive)) {
                     ForEach(viewModel.overdueReminders) { reminder in
                         ReminderRow(reminder: reminder)
                     }
@@ -60,7 +64,7 @@ struct MaintenanceRemindersView: View {
             
             // Upcoming Section
             if !viewModel.upcomingReminders.isEmpty {
-                Section(header: labelSection("Upcoming", color: .hotCarSecondary)) {
+                Section(header: labelSection(NSLocalizedString("maintenance_upcoming", tableName: "Localizable", comment: "Upcoming section title"), color: .hotCarSecondary)) {
                     ForEach(viewModel.upcomingReminders) { reminder in
                         ReminderRow(reminder: reminder)
                     }
@@ -69,7 +73,7 @@ struct MaintenanceRemindersView: View {
             
             // Completed Section
             if !viewModel.completedReminders.isEmpty {
-                Section(header: labelSection("Completed", color: .textMuted)) {
+                Section(header: labelSection(NSLocalizedString("maintenance_completed", tableName: "Localizable", comment: "Completed section title"), color: .textMuted)) {
                     ForEach(viewModel.completedReminders) { reminder in
                         ReminderRow(reminder: reminder)
                     }
@@ -98,7 +102,7 @@ struct MaintenanceRemindersView: View {
                 .font(.system(size: 64))
                 .foregroundColor(.textMuted)
             
-            Text("No Maintenance Reminders")
+            Text(NSLocalizedString("maintenance_no_reminders", tableName: "Localizable", comment: "No maintenance reminders message"))
                 .font(.hotCarTitle)
                 .foregroundColor(.textPrimary)
             
@@ -123,7 +127,7 @@ struct MaintenanceRemindersView: View {
                     await viewModel.generateStandardReminders()
                 }
             }) {
-                Text("Use Standard Schedule")
+                Text(NSLocalizedString("maintenance_use_standard", tableName: "Localizable", comment: "Use standard schedule button"))
                     .font(.hotCarCaption)
                     .foregroundColor(.hotCarPrimary)
             }
@@ -136,7 +140,7 @@ struct MaintenanceRemindersView: View {
 
 struct ReminderRow: View {
     
-    @StateObject private var viewModel = MaintenanceRemindersViewModel()
+    @StateObject private var viewModel = MaintenanceRemindersViewModel(vehicleId: "")
     let reminder: MaintenanceReminder
     
     var body: some View {
@@ -153,9 +157,16 @@ struct ReminderRow: View {
                     .font(.hotCarHeadline)
                     .foregroundColor(.textPrimary)
                 
-                Text(reminder.type.displayName)
-                    .font(.hotCarCaption)
-                    .foregroundColor(.textSecondary)
+                if let description = reminder.description, !description.isEmpty {
+                    Text(description)
+                        .font(.hotCarCaption)
+                        .foregroundColor(.textSecondary)
+                        .lineLimit(2)
+                } else {
+                    Text(reminder.type.displayName)
+                        .font(.hotCarCaption)
+                        .foregroundColor(.textSecondary)
+                }
                 
                 if let dueDate = reminder.dueDate {
                     Text("Due: \(dueDate, style: .date)")

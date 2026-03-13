@@ -2,8 +2,9 @@
 //  HomeViewModel.swift
 //  hotcar
 //
-//  HotCar Home Screen ViewModel
+//  HotCar Home Screen ViewModel (Refactored)
 //  Manages state and business logic for home screen
+//  Optimized for US/Canada/Nordic markets
 //
 
 import Foundation
@@ -16,23 +17,54 @@ final class HomeViewModel: ObservableObject {
     
     @Published var currentTemperature: Double?
     @Published var tomorrowTemperature: Double?
-    @Published var locationName: String = "Loading..."
+    @Published var locationName: String = NSLocalizedString("loading", tableName: "Localizable", comment: "Loading state text shown while fetching location")
     @Published var isLoading: Bool = false
-    @Published var primaryVehicle: Vehicle?
-    @Published var isTimerActive: Bool = false
-    @Published var fuelSaved: Double = 0.0
-    @Published var fuelUsed: Double = 0.0
     
+    @Published var isTimerActive: Bool = false
+    @Published var isTimerPaused: Bool = false
     @Published var timeRemaining: Int = 0
     @Published var timerProgress: Double = 0.0
-    @Published var isTimerPaused: Bool = false
+    
+    // MARK: - Dependencies (Using @Published for reactive updates)
+    
+    @Published var settingsService = SettingsService.shared
+    @Published var vehicleService = VehicleService.shared
+    @Published var statisticsService = StatisticsService.shared
+    
+    private let weatherService = WeatherService.shared
+    private let countdownTimer = CountdownTimer.shared
+    private let widgetService = WidgetDataService.shared
+    private let locationService = LocationService.shared
+    private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Computed Properties
     
+    /// Temperature unit from settings
+    var temperatureUnit: AppSettings.TemperatureUnit {
+        settingsService.settings.temperatureUnit
+    }
+    
+    /// Primary vehicle from vehicle service
+    var primaryVehicle: Vehicle? {
+        vehicleService.getPrimaryVehicle()
+    }
+    
+    /// All vehicles from vehicle service
+    var vehicles: [Vehicle] {
+        vehicleService.vehicles
+    }
+    
+    /// Temperature status based on current temperature
+    var temperatureStatus: TemperatureStatus? {
+        guard let temp = currentTemperature else { return nil }
+        return TemperatureStatus.from(celsius: temp)
+    }
+    
+    /// Calculated warm-up time for current conditions
     var calculatedWarmUpTime: Int {
         guard let temperature = currentTemperature,
               let vehicle = primaryVehicle else {
-            return 5 // Default
+            return settingsService.settings.defaultTimerDuration
         }
         
         return WarmUpCalculationEngine.calculateWarmUpTime(
@@ -44,10 +76,11 @@ final class HomeViewModel: ObservableObject {
         )
     }
     
+    /// Calculated warm-up time for tomorrow's forecast
     var calculatedWarmUpTimeForTomorrow: Int {
         guard let temperature = tomorrowTemperature,
               let vehicle = primaryVehicle else {
-            return 5 // Default
+            return settingsService.settings.defaultTimerDuration
         }
         
         return WarmUpCalculationEngine.calculateWarmUpTime(
@@ -59,6 +92,17 @@ final class HomeViewModel: ObservableObject {
         )
     }
     
+    /// Current statistics
+    var statistics: WarmUpStatistics {
+        statisticsService.statistics
+    }
+    
+    /// Check if user is new (no sessions)
+    var isNewUser: Bool {
+        statistics.totalSessions == 0
+    }
+    
+    /// Warm-up advice based on current conditions
     var warmUpAdvice: String? {
         guard let temperature = currentTemperature,
               let vehicle = primaryVehicle else {
@@ -74,33 +118,17 @@ final class HomeViewModel: ObservableObject {
         )
     }
     
-    // MARK: - Dependencies
-    
-    private let weatherService = WeatherService.shared
-    private let vehicleService = VehicleService.shared
-    private let widgetService = WidgetDataService.shared
-    private let locationService = LocationService.shared
-    private let countdownTimer = CountdownTimer.shared
-    private var cancellables = Set<AnyCancellable>()
+    // MARK: - Initialization
     
     init() {
         setupBindings()
-        loadVehicle()
-        setupTimerBindings()
+        loadInitialData()
     }
     
     // MARK: - Setup
     
     private func setupBindings() {
-        vehicleService.$vehicles
-            .receive(on: RunLoop.main)
-            .sink { [weak self] vehicles in
-                self?.primaryVehicle = vehicles.first { $0.isPrimary } ?? vehicles.first
-            }
-            .store(in: &cancellables)
-    }
-    
-    private func setupTimerBindings() {
+        // Timer bindings
         countdownTimer.$timeRemaining
             .receive(on: RunLoop.main)
             .sink { [weak self] time in
@@ -124,27 +152,28 @@ final class HomeViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    // MARK: - Public Methods
+    // MARK: - Data Loading
     
-    func loadWeather() {
+    func loadInitialData() {
+        Task {
+            await vehicleService.loadVehicles()
+            await loadWeather()
+        }
+    }
+    
+    func loadWeather() async {
         isLoading = true
         
-        Task {
-            await weatherService.fetchCurrentTemperature()
-            await weatherService.fetchTomorrowMorningTemperature()
-            
-            // Update UI with weather data
-            self.currentTemperature = weatherService.currentTemperature
-            self.tomorrowTemperature = weatherService.tomorrowMorningTemp
-            
-            // Update location name from LocationService
-            self.locationName = locationService.locationName
-            
-            self.isLoading = false
-            
-            // Update widget weather data
-            updateWidgetWeatherData()
-        }
+        await weatherService.fetchCurrentTemperature()
+        await weatherService.fetchTomorrowMorningTemperature()
+        
+        self.currentTemperature = weatherService.currentTemperature
+        self.tomorrowTemperature = weatherService.tomorrowMorningTemp
+        self.locationName = locationService.locationName
+        
+        isLoading = false
+        
+        updateWidgetWeatherData()
     }
     
     private func updateWidgetWeatherData() {
@@ -153,29 +182,16 @@ final class HomeViewModel: ObservableObject {
         widgetService.updateWeatherData(
             outsideTemp: temp,
             feelsLike: weatherService.currentTemperature ?? temp,
-            condition: "Clear", // TODO: Get from weather service
+            condition: "Clear",
             location: locationName
         )
         
-        // Update recommended time
         widgetService.updateRecommendedTime(calculatedWarmUpTime)
     }
     
-    func loadVehicle() {
-        Task {
-            await vehicleService.loadVehicles()
-        }
-    }
+    // MARK: - Timer Control
     
-    func toggleTimer() {
-        if isTimerActive {
-            stopTimer()
-        } else {
-            startTimer()
-        }
-    }
-    
-    private func startTimer() {
+    func startTimer() {
         guard let vehicle = primaryVehicle,
               let temperature = currentTemperature else {
             return
@@ -189,12 +205,18 @@ final class HomeViewModel: ObservableObject {
             vehicleId: vehicle.id,
             temperature: temperature
         )
-        
-        updateFuelStats()
     }
     
-    private func stopTimer() {
+    func stopTimer() {
         countdownTimer.stop()
+    }
+    
+    func toggleTimer() {
+        if isTimerActive {
+            stopTimer()
+        } else {
+            startTimer()
+        }
     }
     
     func pauseTimer() {
@@ -210,9 +232,17 @@ final class HomeViewModel: ObservableObject {
         countdownTimer.reset(minutes: newMinutes)
     }
     
-    private func updateFuelStats() {
-        let stats = StatisticsService.shared.statistics
-        fuelSaved = stats.totalFuelSaved
-        fuelUsed = stats.totalFuelUsed
+    // MARK: - Vehicle Control
+    
+    func setPrimaryVehicle(_ vehicle: Vehicle) {
+        Task {
+            await vehicleService.setPrimaryVehicle(vehicle)
+        }
+    }
+    
+    // MARK: - Refresh
+    
+    func refresh() async {
+        await loadWeather()
     }
 }
