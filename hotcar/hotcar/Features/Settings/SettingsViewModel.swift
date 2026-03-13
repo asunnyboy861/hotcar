@@ -133,19 +133,19 @@ final class SettingsViewModel: ObservableObject {
     }
     
     func showPrivacyPolicy() {
-        if let url = URL(string: "https://hotcar.app/privacy") {
+        if let url = URL(string: "https://hotcar-privacy.zzoutuo.com") {
             openURL(url)
         }
     }
     
     func showTermsOfService() {
-        if let url = URL(string: "https://hotcar.app/terms") {
+        if let url = URL(string: "https://hotcar-privacy.zzoutuo.com") {
             openURL(url)
         }
     }
     
     func contactSupport() {
-        if let url = URL(string: "mailto:support@hotcar.app") {
+        if let url = URL(string: "https://hotcar-support.zzoutuo.com") {
             openURL(url)
         }
     }

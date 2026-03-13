@@ -13,7 +13,6 @@ struct SettingsView: View {
     
     @StateObject private var viewModel = SettingsViewModel()
     @Environment(\.dismiss) private var dismiss
-    @State private var showingContactSupport = false
     @State private var showingExportSheet = false
     @State private var exportFileURL: URL?
     
@@ -45,9 +44,6 @@ struct SettingsView: View {
                         dismiss()
                     }
                 }
-            }
-            .sheet(isPresented: $showingContactSupport) {
-                ContactSupportView()
             }
             .sheet(isPresented: $showingExportSheet) {
                 if let url = exportFileURL {
@@ -215,15 +211,14 @@ struct SettingsView: View {
                 }
                 
                 Button(action: {
-                    showingContactSupport = true
+                    viewModel.contactSupport()
                 }) {
                     HStack {
                         Text(NSLocalizedString("contact_support_button", tableName: "Localizable", comment: "Contact support button"))
                             .foregroundColor(.hotCarPrimary)
                         Spacer()
-                        Image(systemName: "chevron.right")
-                            .font(.system(size: 14))
-                            .foregroundColor(.textMuted)
+                        Image(systemName: "arrow.up.right.square")
+                            .foregroundColor(.hotCarPrimary)
                     }
                 }
             }
