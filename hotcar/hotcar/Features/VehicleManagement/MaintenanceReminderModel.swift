@@ -120,11 +120,11 @@ enum MaintenanceType: String, Codable, CaseIterable {
         case .tireRotation:
             return "circle.circle"
         case .brakeInspection:
-            return "disc.fill"
+            return "exclamationmark.circle.fill"  // Changed from "disc.fill" for iOS 15/16 compatibility
         case .batteryCheck:
             return "battery.100"
         case .coolantFlush:
-            return "thermometer.liquid.fill"
+            return "thermometer"  // Changed from "thermometer.liquid.fill" for iOS 15/16 compatibility
         case .transmissionService:
             return "gearshape.fill"
         case .airFilterReplacement:

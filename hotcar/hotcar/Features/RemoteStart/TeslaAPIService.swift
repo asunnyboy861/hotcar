@@ -24,6 +24,12 @@ final class TeslaAPIService {
     private var accessToken: String?
     private var vehicleID: Int64?
     
+    // MARK: - Public Access
+    
+    var isAuthenticated: Bool {
+        return accessToken != nil
+    }
+    
     // MARK: - Initialization
     
     private init() {}

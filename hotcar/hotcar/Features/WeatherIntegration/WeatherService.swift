@@ -177,14 +177,13 @@ final class WeatherService: ObservableObject {
             let decoder = JSONDecoder()
             let weatherData = try decoder.decode(HourlyWeatherResponse.self, from: data)
             
-            // Get temperature for 7 AM tomorrow
+            // Get temperature for 7 AM tomorrow using parsed dates
             let tomorrow7AM = Calendar.current.startOfDay(for: Date())
                 .addingTimeInterval(24 * 60 * 60 + 7 * 60 * 60)
             
-            if let index = weatherData.hourly.time.firstIndex(where: { $0 >= tomorrow7AM }) {
-                await MainActor.run {
-                    self.tomorrowMorningTemp = weatherData.hourly.temperature[index]
-                }
+            let dates = weatherData.hourly.parsedDates
+            if let index = dates.firstIndex(where: { $0 >= tomorrow7AM }) {
+                self.tomorrowMorningTemp = weatherData.hourly.temperature[index]
             }
         } catch {
             print("Error fetching tomorrow's temperature: \(error)")
@@ -271,11 +270,21 @@ struct HourlyWeatherResponse: Codable {
 }
 
 struct HourlyData: Codable {
-    let time: [Date]
+    let time: [String]  // ISO 8601 format strings like "2024-01-15T07:00"
     let temperature: [Double]
     
     enum CodingKeys: String, CodingKey {
         case time
         case temperature = "temperature_2m"
+    }
+    
+    /// Parse ISO 8601 strings to Date objects
+    /// Note: Open-Meteo returns format "yyyy-MM-dd'T'HH:mm" without seconds
+    var parsedDates: [Date] {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
+        formatter.timeZone = TimeZone(identifier: "UTC")
+        
+        return time.compactMap { formatter.date(from: $0) }
     }
 }

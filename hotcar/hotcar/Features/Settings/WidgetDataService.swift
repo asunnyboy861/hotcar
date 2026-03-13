@@ -142,4 +142,18 @@ extension WidgetDataService {
         updateWidgetData(recommendedTime: minutes)
         reloadWidgets()
     }
+    
+    /// Update widget with climate control state
+    /// - Parameters:
+    ///   - isOn: Whether climate control is active
+    ///   - insideTemp: Current inside temperature (optional)
+    func updateClimateState(isOn: Bool, insideTemp: Double?) {
+        // Store in UserDefaults for widget to read
+        sharedDefaults?.set(isOn, forKey: "widget_climate_on")
+        sharedDefaults?.set(insideTemp, forKey: "widget_inside_temp")
+        sharedDefaults?.synchronize()
+        
+        // Reload widget timeline using WidgetCenter
+        WidgetCenter.shared.reloadTimelines(ofKind: "HotCarWidget")
+    }
 }

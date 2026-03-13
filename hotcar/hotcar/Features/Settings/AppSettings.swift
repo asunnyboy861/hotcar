@@ -111,6 +111,11 @@ struct AppSettings: Codable {
             let formatString = "%.\(decimals)f%@"
             return String(format: formatString, value, symbol)
         }
+        
+        /// Convert from current unit to Celsius (alias for convertToCelsius)
+        func toCelsius(_ value: Double) -> Double {
+            return convertToCelsius(value)
+        }
     }
     
     enum DarkModeSetting: String, Codable, CaseIterable {

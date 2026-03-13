@@ -261,6 +261,9 @@ final class CountdownTimer: ObservableObject {
         
         // Strong haptic feedback
         hapticService.timerComplete()
+        
+        // Sound feedback
+        SoundFeedbackService.shared.onTimerComplete()
     }
     
     // MARK: - State Persistence

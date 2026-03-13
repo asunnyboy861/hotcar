@@ -83,4 +83,53 @@ final class VehicleService: ObservableObject {
     func getPrimaryVehicle() -> Vehicle? {
         return vehicles.first { $0.isPrimary }
     }
+    
+    // MARK: - API Connection Detection
+    
+    /// Check if vehicle has API connection
+    /// - Parameter vehicle: The vehicle to check
+    /// - Returns: True if vehicle has a valid API token
+    func hasAPIConnection(_ vehicle: Vehicle) -> Bool {
+        guard let token = vehicle.apiToken else { return false }
+        return !token.isEmpty
+    }
+    
+    /// Get API connection type for vehicle
+    /// - Parameter vehicle: The vehicle to check
+    /// - Returns: The API connection type (Tesla, Ford, GM, etc.)
+    func getAPIConnectionType(_ vehicle: Vehicle) -> APIConnectionType {
+        guard let token = vehicle.apiToken, !token.isEmpty else {
+            return .unknown
+        }
+        
+        // Detect API type based on token prefix
+        if token.hasPrefix("tesla_") {
+            return .tesla
+        }
+        
+        if token.hasPrefix("ford_") {
+            return .ford
+        }
+        
+        if token.hasPrefix("gm_") {
+            return .gm
+        }
+        
+        // Check for other brand tokens (Toyota uses different format)
+        if token.lowercased().contains("toyota") {
+            return .toyota
+        }
+        
+        return .unknown
+    }
+}
+
+// MARK: - API Connection Type
+
+enum APIConnectionType {
+    case tesla
+    case ford
+    case gm
+    case toyota
+    case unknown
 }
