@@ -100,7 +100,7 @@ struct ReminderCard: View {
                 
                 Spacer()
                 
-                if let vehicleId = schedule.vehicleId {
+                if let _ = schedule.vehicleId {
                     Label("Vehicle", systemImage: "car")
                         .font(.caption)
                         .foregroundColor(.secondary)

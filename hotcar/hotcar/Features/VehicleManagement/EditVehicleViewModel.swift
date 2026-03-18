@@ -93,7 +93,7 @@ final class EditVehicleViewModel: ObservableObject {
     }
     
     func deleteVehicle() async {
-        if let vehicle = await vehicleService.vehicles.first(where: { $0.id == vehicleId }) {
+        if let vehicle = vehicleService.vehicles.first(where: { $0.id == vehicleId }) {
             await vehicleService.deleteVehicle(vehicle)
         }
     }

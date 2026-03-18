@@ -62,7 +62,7 @@ struct SettingsView: View {
                     Text(unit.displayName).tag(unit)
                 }
             }
-            .onChange(of: viewModel.temperatureUnit) { _ in
+            .onChange(of: viewModel.temperatureUnit) {
                 viewModel.triggerSave()
             }
             
@@ -78,7 +78,7 @@ struct SettingsView: View {
                         .foregroundColor(.textSecondary)
                 }
             }
-            .onChange(of: viewModel.defaultTargetTemp) { _ in
+            .onChange(of: viewModel.defaultTargetTemp) {
                 viewModel.triggerSave()
             }
         }
@@ -100,17 +100,17 @@ struct SettingsView: View {
                         .foregroundColor(.textSecondary)
                 }
             }
-            .onChange(of: viewModel.defaultTimerDuration) { _ in
+            .onChange(of: viewModel.defaultTimerDuration) {
                 viewModel.triggerSave()
             }
             
             Toggle("Auto-start Timer", isOn: $viewModel.autoStartTimer)
-                .onChange(of: viewModel.autoStartTimer) { _ in
+                .onChange(of: viewModel.autoStartTimer) {
                     viewModel.triggerSave()
                 }
             
             Toggle("Notifications", isOn: $viewModel.showNotifications)
-                .onChange(of: viewModel.showNotifications) { _ in
+                .onChange(of: viewModel.showNotifications) {
                     viewModel.triggerSave()
                 }
             
@@ -119,12 +119,12 @@ struct SettingsView: View {
                     Text(sound.displayName).tag(sound)
                 }
             }
-            .onChange(of: viewModel.notificationSound) { _ in
-                viewModel.triggerSave()
-            }
+            .onChange(of: viewModel.notificationSound) {
+                    viewModel.triggerSave()
+                }
             
             Toggle("Haptic Feedback", isOn: $viewModel.hapticFeedback)
-                .onChange(of: viewModel.hapticFeedback) { _ in
+                .onChange(of: viewModel.hapticFeedback) {
                     viewModel.triggerSave()
                 }
         }
@@ -139,7 +139,7 @@ struct SettingsView: View {
                     Text(mode.displayName).tag(mode)
                 }
             }
-            .onChange(of: viewModel.darkMode) { _ in
+            .onChange(of: viewModel.darkMode) {
                 viewModel.triggerSave()
             }
         }

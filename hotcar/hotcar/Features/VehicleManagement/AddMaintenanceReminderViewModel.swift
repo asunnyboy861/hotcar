@@ -51,7 +51,6 @@ final class AddMaintenanceReminderViewModel: ObservableObject {
         )
         
         await maintenanceService.addReminder(reminder)
-        NotificationCenter.default.post(name: .maintenanceReminderAdded, object: nil)
     }
     
     func setInterval(_ days: Int) {

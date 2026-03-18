@@ -72,7 +72,7 @@ struct ShareView: View {
                     .tag(ShareData.SharePeriod.allTime)
             }
             .pickerStyle(.segmented)
-            .onChange(of: viewModel.selectedPeriod) { _ in
+            .onChange(of: viewModel.selectedPeriod) {
                 viewModel.updateShareData()
             }
         }

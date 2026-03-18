@@ -54,10 +54,8 @@
 	<string>HotCar needs your location to monitor geo-fences and provide smart reminders.</string>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>location</string>
 		<string>fetch</string>
 		<string>processing</string>
-		<string>audio</string>
 		<string>remote-notification</string>
 	</array>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>

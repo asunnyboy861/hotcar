@@ -119,7 +119,9 @@ final class CountdownTimer: ObservableObject {
         }
         
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-            self?.tick()
+            Task { @MainActor in
+                self?.tick()
+            }
         }
         
         persistState()
@@ -153,7 +155,9 @@ final class CountdownTimer: ObservableObject {
         hapticService.timerStart()
         
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-            self?.tick()
+            Task { @MainActor in
+                self?.tick()
+            }
         }
         
         // Update widget
@@ -309,7 +313,9 @@ final class CountdownTimer: ObservableObject {
                 
                 // Resume timer
                 timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-                    self?.tick()
+                    Task { @MainActor in
+                        self?.tick()
+                    }
                 }
             } else {
                 // Timer expired while app was closed

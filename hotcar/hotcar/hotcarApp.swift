@@ -68,9 +68,8 @@ final class NotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
     ) {
         let userInfo = response.notification.request.content.userInfo
         
-        if let actionIdentifier = response.actionIdentifier as? String {
-            handleNotificationAction(actionIdentifier, userInfo: userInfo)
-        }
+        let actionIdentifier = response.actionIdentifier
+        handleNotificationAction(actionIdentifier, userInfo: userInfo)
         
         completionHandler()
     }

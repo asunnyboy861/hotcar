@@ -64,7 +64,7 @@ final class AddVehicleViewModel: ObservableObject {
         
         await vehicleService.addVehicle(newVehicle)
         
-        if await vehicleService.getPrimaryVehicle() == nil {
+        if vehicleService.getPrimaryVehicle() == nil {
             await vehicleService.setPrimaryVehicle(newVehicle)
         }
     }

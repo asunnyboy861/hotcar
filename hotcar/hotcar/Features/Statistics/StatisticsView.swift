@@ -49,7 +49,7 @@ struct StatisticsView: View {
                 }
             }
         }
-        .onChange(of: selectedPeriod) { newPeriod in
+        .onChange(of: selectedPeriod) { _, newPeriod in
             viewModel.setTimeRange(newPeriod)
         }
         .onAppear {

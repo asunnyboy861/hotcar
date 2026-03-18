@@ -84,18 +84,15 @@ final class MaintenanceRemindersViewModel: ObservableObject {
     
     func completeReminder(_ reminder: MaintenanceReminder) async {
         await maintenanceService.markReminderAsCompleted(reminder.id)
-        loadReminders(for: reminder.vehicleId)
     }
     
     func deleteReminder(_ reminder: MaintenanceReminder) async {
         await maintenanceService.deleteReminder(reminder)
-        loadReminders(for: reminder.vehicleId)
     }
     
     func generateStandardReminders() async {
         // This would need vehicleId passed in
         // For now, using a placeholder
         await maintenanceService.generateStandardReminders(for: "1")
-        loadReminders(for: "1")
     }
 }
